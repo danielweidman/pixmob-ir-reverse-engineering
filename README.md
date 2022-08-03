@@ -36,7 +36,7 @@ Through trial and error, it was determined that the signal recording actually co
 
 From plots like this, we noticed that the transition intervals cluster around multiples of 700 microseconds. With this knowledge, we translated the signals into a binary representation, with each bit representing a 700 microsecond time interval.
 
-![Examples of generate packets, with and without fade effect tails](media/fig_2_packet_head_and_tail.png)
+![Graph of high/low IR pulse time durations](media/fig_1a_pulse_duration_graph.png)
 
 All recorded signals (even those which did not immediately produce an effect when retransmitted) contained the same &quot;1000000000&quot; start sequence. From experimentation, we determined that the &quot;1000000000&quot; start sequence is not required if only sending one signal at a time without repetition—it is just used to separate individual IR codes/signal transmissions.
 
@@ -65,7 +65,7 @@ Notably, one of the bracelets used in testing reacted to many commands by blinki
 
 In reviewing the brute force results, we discovered that some of the light effects packets can be separated into two parts, a beginning part that specifies what color the effect should be, and an optional second part that specified if the color should be faded in and out, as well as if every bracelet should show the effect every time the code is sent or if random logic should be used to determine whether or not to show the effect. If the second part is omitted, the bracelets will just show the color briefly with no fading.
 
-![](RackMultipart20220803-1-t2if1i_html_9ac1ec0f2681b317.png)
+![Examples of generate packets, with and without fade effect tails](media/fig_2_packet_head_and_tail.png)
 
 **Limitations:**
 
@@ -101,7 +101,7 @@ This project consists of two code components:
 You will need:
 
 1. An Arduino-compatible microcontroller.
-2. A 940nm IR emitter for the Arduino. You could set up a raw IR led or use a board like the transmitter piece of this: [https://www.amazon.com/Digital-Receiver-Transmitter-Arduino-Compatible/dp/B01E20VQD8/](https://www.amazon.com/Digital-Receiver-Transmitter-Arduino-Compatible/dp/B01E20VQD8/)
+2. A 940nm IR emitter for the Arduino. You could set up a raw IR led or use a board like the transmitter piece of [this](https://www.amazon.com/Digital-Receiver-Transmitter-Arduino-Compatible/dp/B01E20VQD8/).
 
 Once you have the above, you can use the code in &quot;arduino\_sender&quot; and &quot;python\_host&quot; to make your bracelet(s) light up in pretty colors. Separate README files exist in each of those folders.
 
