@@ -64,7 +64,7 @@ EFFECTS_TO_SHOW = [
 
 #################################
 arduino = serial.Serial(port=ARDUINO_SERIAL_PORT, baudrate=ARDUINO_BAUD_RATE, timeout=.1)
-time.sleep(6.5)
+time.sleep(3)
 
 def send_effect(main_effect, tail_code):
     if main_effect in base_color_effects:
