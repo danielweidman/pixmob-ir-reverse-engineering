@@ -11,7 +11,7 @@ from effect_definitions import base_color_effects, tail_codes, special_effects
 
 # Which effect/color to display on the lights. See base_color_effects or special_effects in effect_definitions.py for
 # options.
-MAIN_EFFECT = "RED"
+MAIN_EFFECT = "BLUE"
 
 # Optional, set to None if not using. Can use this to modify simple color effects by making them fade in and/or out
 # and/or making them display probabilistically. See tail_codes in effect_definitions.py for options.

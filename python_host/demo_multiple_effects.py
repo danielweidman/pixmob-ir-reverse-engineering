@@ -1,5 +1,7 @@
 import serial
 import time
+from pixmob_conversion_funcs import to_arduino_string
+from effect_definitions import base_color_effects, tail_codes, special_effects
 
 # This file lets you send a series of light effect commands with customizable timings over IR by way of an Arduino
 # connected to this computer running one of the PixMob_Transmitter sketches in the arduino_sender folder. Theoretically
@@ -38,19 +40,19 @@ EFFECTS_TO_SHOW = [
         "duration": .8
     },
     {
-        "main_effect": "RED",
+        "main_effect": "TURQUOISE",
         "tail_code": "FADE_1",
         "duration": 3.5
     },
     {
-        "main_effect": "GREEN",
+        "main_effect": "YELLOW",
         "tail_code": "FADE_2",
         "duration": 3
     },
     {
-        "main_effect": "BLUE",
-        "tail_code": "FADE_3",
-        "duration": 5
+        "main_effect": "MAGENTA",
+        "tail_code": "FADE_5",
+        "duration": 4
     },
     {
         "main_effect": "SLOW_ORANGE",
@@ -62,7 +64,7 @@ EFFECTS_TO_SHOW = [
 
 #################################
 arduino = serial.Serial(port=ARDUINO_SERIAL_PORT, baudrate=ARDUINO_BAUD_RATE, timeout=.1)
-time.sleep(2.5)
+time.sleep(6.5)
 
 def send_effect(main_effect, tail_code):
     if main_effect in base_color_effects:
