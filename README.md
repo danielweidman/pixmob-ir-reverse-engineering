@@ -32,15 +32,15 @@ Of the three initially-discovered signals:
 
 The raw IR signal files recorded by the Flipper were inspected and analyzed. It was found that the IR signals have a carrier frequency of 38 kHz. The times between each high/low change were graphed for the signals, producing plots like the one below:
 
-![Examples of recorded packets](media/fig_1_packet_examples.png)
+![Graph of high/low IR pulse time durations](media/fig_1a_pulse_duration_graph.png)
 
 Through trial and error, it was determined that the signal recording actually contained multiple &quot;copies&quot; of the white flash signal, and the recording can be cropped down significantly and still produce the same effect. The minimum necessary segment of the recording required to elicit the white flash bracelet effect spans the samples between each of the ~6300 dots on the graph above.
 
 From plots like this, we noticed that the transition intervals cluster around multiples of 700 microseconds. With this knowledge, we translated the signals into a binary representation, with each bit representing a 700 microsecond time interval.
 
-![Graph of high/low IR pulse time durations](media/fig_1a_pulse_duration_graph.png)
+![Examples of recorded packets](media/fig_1_packet_examples.png)
 
-All recorded signals (even those which did not immediately produce an effect when retransmitted) contained the same &quot;1000000000&quot; start sequence. From experimentation, we determined that the &quot;1000000000&quot; start sequence is not required if only sending one signal at a time without repetition—it is just used to separate individual IR codes/signal transmissions.
+All recorded signals (even those which did not immediately produce an effect when retransmitted) contained the same &quot;1000000000&quot; start sequence. From experimentation, we determined that the &quot;1000000000&quot; start sequence is not required if only sending one signal at a time without repetition—it is just used to separate individual IR codes/signal transmissions (and possibly to "wake" inactive bracelets, though transmitting any valid IR packet twice will also accomplish this). As such, the leading 1000000000 is removed from the IR signals included in this repository.
 
 With these binary representations in hand, we wrote a program to &quot;brute-force&quot; IR signals in a targeted manner, where we selected specific ranges of bits to brute-force based on inferences made from known signals. This was done with an ESP32 development board with and IR transmitter.
 
@@ -116,4 +116,4 @@ You will, of course, need non-empty batteries in your PixMob bracelet to make it
 - Other bracelets may unfortunately need to pried open and potentially taped back together. Most of these take 2 CR1632 batteries.
 
 ## Contributing
-Feel free to open an issue or pull request if you have any improvements to make or if you are able to glean anything new and action-worthy about the IR packet structure.
+Feel free to open an issue or pull request if you have any improvements to make or if you are able to glean anything new and action-worthy about the IR packet structure. I'm also happy to answer any questions about how to get things up and running.
