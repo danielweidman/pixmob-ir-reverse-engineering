@@ -4,7 +4,7 @@ Hacking the PixMob infrared protocol to enable control of PixMob wristbands at h
 
 ***A huge thanks to Zach Resmer ([@zacharesmer](https://github.com/zacharesmer)) for his help in figuring out the packet structure of the IR transmissions and Steve from Reddit for making some initial in-the-wild IR signal recordings.***
 
-### Skip down to &quot;Instructions&quot; if you are not interested in the full write-up.
+### Skip down to &quot;Instructions&quot; if you are not interested in the full write-up and just want to light up your bracelet(s)!
 
 https://user-images.githubusercontent.com/44669548/182740123-8e16b0af-327b-44b2-a6bb-12d9a502a1fd.mp4
 
@@ -75,7 +75,7 @@ In reviewing the brute force results, we discovered that some of the light effec
 - We&#39;ve only been able to reliably discover codes that produce an immediate effect to bracelets. We know that there are many more complicated ways these bracelets are used in the wild that involves transmitting programming/light choreography information before a long light effect and then triggering those effects to run in some way.
 
 **Next steps:**
-
+- Learn more about the IR packet structure.
 - Make the documentation more complete.
 - Write a standalone Arduino library for controlling the bracelets without a computer.
 - Write an installable Python library for controlling the bracelets directly on a device that runs Python code with GPIO pins (e.g. Raspberry Pi).
