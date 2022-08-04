@@ -6,7 +6,9 @@ Hacking the PixMob infrared protocol to enable control of PixMob wristbands at h
 
 ### Skip down to &quot;Instructions&quot; if you are not interested in the full write-up.
 
-## Background:
+https://user-images.githubusercontent.com/44669548/182740123-8e16b0af-327b-44b2-a6bb-12d9a502a1fd.mp4
+
+## Background
 
 PixMob bracelets are LED wristbands distributed to every member of the audience at large events which all light up in sync to create massive, distributed light shows. The wristbands react to Infrared commands from various types of fixed and moving transmitters. The wristbands have been used by various sports teams (including during the Super Bowl) and touring bands such as Coldplay, Shawn Mendes, Taylor Swift, Bad Bunny, The Weeknd and, Lady Gaga to produce light shows that take advantage of the line-of-sight nature of IR light/&quot;signals&quot; to make light effects that vary by physical location in an event venue. After the event, bracelets are sometimes collected for reuse/recycling, but often attendees are left to take home the inactive bracelets.
 
