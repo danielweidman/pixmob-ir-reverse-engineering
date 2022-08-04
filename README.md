@@ -18,7 +18,7 @@ This project set out to actually reverse-engineer the production PixMob bracelet
 
 **Hardware Notes:**
 
-We tested with six different versions of PixMob bracelets manufactured between 2014 and 2021 from various events including Portland Trail Blazers games, Superbowl LIV, and concerts of Taylor Swift, Coldplay, and The Weeknd. Each bracelet has an IR receiver and RGB LEDs along with pseudo random number generation capabilities and persistent memory. Some models also contain a motion sensor for motion-activated effects. A public FCC filing for one of the models of IR transmitters used at PixMob-equipped events confirms that they work on 940nm infrared light. There is some evidence that the bracelets enter a sleep mode when not in use for a while
+We tested with six different versions of PixMob bracelets manufactured between 2014 and 2021 from various events including Portland Trail Blazers games, Superbowl LIV, and concerts of Taylor Swift, Coldplay, and The Weeknd. Each bracelet has an IR receiver and RGB LEDs along with pseudo random number generation capabilities and persistent memory. Some models also contain a motion sensor for motion-activated effects. Feel free to open an issue if you want more specific hardware information or teardown photos. A public FCC filing for one of the models of IR transmitters used at PixMob-equipped events confirms that they work on 940nm infrared light. There is some evidence that the bracelets enter a sleep mode when not in use for a while.
 
 **Methods:**
 
