@@ -105,11 +105,18 @@ You will need:
 1. An Arduino-compatible microcontroller.
 2. A 940nm IR emitter for the Arduino. You could set up a raw IR led or use a board like the transmitter piece of [this](https://www.amazon.com/Digital-Receiver-Transmitter-Arduino-Compatible/dp/B01E20VQD8/).
 
-Once you have the above, you can use the code in &quot;arduino\_sender&quot; and &quot;python\_host&quot; to make your bracelet(s) light up in pretty colors. Separate README files exist in each of those folders.
+Basically, the steps are:
+1. Connect an IR LED/transmitter to the Arduino board.
+2. Connect the Arduino to a computer by USB.
+3. Upload the sketch from &quot;arduino\_sender&quot; to the Arduino. You may need to install the IRremote or IRremoteESP8266 library first. Make sure to set the IR tranmitter data pin variable and note down the port/device address (COM port on Windows) of the Arduino.
+4. Set the ARDUINO_SERIAL_PORT at the top of &quot;python\_host/demo_single_effect.py&quot; or &quot;python\_host/demo_multiple_effects.py&quot; script. If using a lower-power Arduino device like an Arduino Nano, also set WAIT_BEFORE_SEND to True.
+5. Run the script. Your PixMob device(s) should light up!
+
+More specific instructions are in the README files in the relevant folders. Feel free to open an Issue if you need help.
 
 **Replacing the batteries:**
 
-You will, of course, need non-empty batteries in your PixMob bracelet to make it work. If you received the bracelet at a past event more than a few days ago, you will most likely need to replace the batteries. The process for doing this differs by bracelet type. This is easier on some models than others.
+You will, of course, need non-empty batteries in your PixMob bracelet/other device to make it work. If you received the bracelet at an event more than a few days ago, you will most likely need to replace the batteries. The process for doing this differs by bracelet type. This is easier on some models than others.
 
 - Some bracelets have a circular battery cover with an indent that one can insert a coin into and turn counter-clockwise to remove. These take 2 CR2032s batteries.
 - Some bracelets have a white plastic rectangular module embedded in a black rubber wristband. The module can be opened by pulling the two tabs on the sides outwards. After that, the batters can be removed by inserting a pen on the bottom side of the module to push the batteries out the top. These take two CR1632 batteries.
