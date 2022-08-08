@@ -119,8 +119,8 @@ More specific instructions are in the README files in the relevant folders. Feel
 You will, of course, need non-empty batteries in your PixMob bracelet/other device to make it work. If you received the bracelet at an event more than a few days ago, you will most likely need to replace the batteries. The process for doing this differs by bracelet type. This is easier on some models than others.
 
 - Some bracelets have a circular battery cover with an indent that one can insert a coin into and turn counter-clockwise to remove. These take 2 CR2032s batteries.
-- Some bracelets have a white plastic rectangular module embedded in a black rubber wristband. The module can be opened by pulling the two tabs on the sides outwards. After that, the batters can be removed by inserting a pen on the bottom side of the module to push the batteries out the top. These take two CR1632 batteries.
-- Other bracelets may unfortunately need to pried open and potentially taped back together. Most of these take 2 CR1632 batteries.
+- Some bracelets have a white plastic rectangular module embedded in a black rubber wristband. The module can be opened by pulling the two tabs on the sides outwards. After that, the batteries can be removed by inserting a pen on the bottom side of the module to push the batteries out the top. These take two CR1632 batteries.
+- Other bracelets may unfortunately need to pried open and potentially taped back together.
 
 ## Contributing
 Feel free to open an issue or pull request if you have any improvements to make or if you are able to glean anything new and action-worthy about the IR packet structure. I'm also happy to answer any questions about how to get things up and running.
