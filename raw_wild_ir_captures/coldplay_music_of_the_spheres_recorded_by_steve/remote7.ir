@@ -1,0 +1,8 @@
+Filetype: IR signals file
+Version: 1
+# 
+name: RAW_17
+type: raw
+frequency: 38000
+duty_cycle: 0.330000
+data: 227 93 255 3393 170 199 216 2995 204 553 318 167 304 317 390 203 196

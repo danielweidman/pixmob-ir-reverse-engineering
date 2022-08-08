@@ -1,0 +1,14 @@
+Filetype: IR signals file
+Version: 1
+# 
+name: Hrt
+type: raw
+frequency: 38000
+duty_cycle: 0.330000
+data: 228 5252 177 4752 226 6915 175 4409 323 66 175 2333 179 1903 178 11151 179 15181 179
+# 
+name: RAW_3
+type: raw
+frequency: 38000
+duty_cycle: 0.330000
+data: 178 66488 171

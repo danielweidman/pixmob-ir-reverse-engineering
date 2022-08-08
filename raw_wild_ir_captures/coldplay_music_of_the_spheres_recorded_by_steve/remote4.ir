@@ -1,0 +1,44 @@
+Filetype: IR signals file
+Version: 1
+# 
+name: RAW_7
+type: raw
+frequency: 38000
+duty_cycle: 0.330000
+data: 300 49730 305 49855 303 49838 310
+# 
+name: RAW_3
+type: raw
+frequency: 38000
+duty_cycle: 0.330000
+data: 178 33152 172
+# 
+name: RAW_5
+type: raw
+frequency: 38000
+duty_cycle: 0.330000
+data: 172 12011 170 1331 176
+# 
+name: RAW_3
+type: raw
+frequency: 38000
+duty_cycle: 0.330000
+data: 178 9921 178
+# 
+name: RAW_5
+type: raw
+frequency: 38000
+duty_cycle: 0.330000
+data: 352 2139 465 1117 472
+# 
+name: RAW_5
+type: raw
+frequency: 38000
+duty_cycle: 0.330000
+data: 335 2232 218 1352 268
+# 
+name: RAW_5
+type: raw
+frequency: 38000
+duty_cycle: 0.330000
+data: 172 2378 446 1017 438
