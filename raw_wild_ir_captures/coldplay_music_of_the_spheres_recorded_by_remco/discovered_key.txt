@@ -1,0 +1,24 @@
+Raw recording key (created by transmitting each of the signals from this folder to bracelets and observing results):
+
+Remote3:
+RAW_147: Yellow slow fade
+RAW_89: Red slow fade
+RAW_941: Mulitple quick white flashes
+
+Remote4:
+RAW_329: Blue to another shade of blue (maybe second shade is controlled by other code)
+RAW_421: weird multi-blink, multiple separate colors?
+
+Remote5:
+RAW_969: Multiple colors
+RAW_863: Multiple colors
+RAW_93: Yellow fade
+
+Remote6:
+RAW_115: White int
+RAW_131: Blue fade
+RAW_281: Red fade, new fade pattern?
+RAW_129: Red fade quick
+RAW_335: Red and white, mulitple colors?
+RAW_669: Cycle through, pink fade, red fade, and nothing
+RAW_739: White and turquoise
