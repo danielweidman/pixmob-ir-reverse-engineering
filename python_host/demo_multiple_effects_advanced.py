@@ -32,19 +32,19 @@ EFFECTS_TO_SHOW = [
     {
         "main_effect": "RED",
         "tail_code": None,
-        "duration": .8,
+        "duration": 5,
         "hold_with_repeated_send": True
     },
     {
         "main_effect": "GREEN",
         "tail_code": None,
-        "duration": .8,
+        "duration": 5,
         "hold_with_repeated_send": True
     },
     {
         "main_effect": "BLUE",
         "tail_code": None,
-        "duration": .8,
+        "duration": 5,
         "hold_with_repeated_send": True,
     },
     {
