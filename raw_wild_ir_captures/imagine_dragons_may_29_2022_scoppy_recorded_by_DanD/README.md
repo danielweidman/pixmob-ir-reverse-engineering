@@ -1,0 +1,1 @@
+Recordings usin Scoppy on Android and a Raspberry Pi Pico as capture interface for an IR sensor
