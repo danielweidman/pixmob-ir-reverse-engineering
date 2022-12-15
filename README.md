@@ -2,7 +2,7 @@
 
 Hacking the PixMob infrared protocol to enable control of PixMob wristbands at home.
 
-***A huge thanks to Zach Resmer ([@zacharesmer](https://github.com/zacharesmer)) for his help in figuring out the packet structure of the IR transmissions and Steve and Remco from Reddit for making some initial in-the-wild IR signal recordings.***
+***A huge thanks to Zach Resmer ([@zacharesmer](https://github.com/zacharesmer)) for his help in figuring out the packet structure of the IR transmissions; Steve and Remco from Reddit for making some initial in-the-wild IR signal Flipper recordings; and Dan ([@hckrdan](https://github.com/hckrdan)) for some crafty raw recordings done with a signal analyzer.***
 
 ### Skip down to &quot;Instructions&quot; if you are not interested in the full write-up and just want to light up your bracelet(s)!
 
