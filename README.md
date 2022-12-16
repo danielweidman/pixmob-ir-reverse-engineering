@@ -88,6 +88,16 @@ In reviewing the brute force results, we discovered that some of the light effec
 - A project reverse engineering the less-common Bluetooth Low-Energy based PixMob bracelets: [https://github.com/MustBeArt/PIXMOB-reversing](https://github.com/MustBeArt/PIXMOB-reversing)
 - Another project that does the equivalent of this one, but for Xylobands, a different brand of LED bracelet that uses RF instead of IR: [https://github.com/StefanKrupop/XyloShield](https://github.com/StefanKrupop/XyloShield)
 
+### Updates (as of 12/16/2022)
+There has been a lot of really good activity and progress in this repo since I first posted it! I am so appreciative of all the help from community members here.
+- /u/remco has contributed some more raw recordings from a Flipper at a Coldplay concert (now we've got two sets of Coldplay recordings)
+- [@hckrdan](https://github.com/hckrdan) made some recordings using a signal analyzer with a Raspberry Pi and IR receiver at an Imagine Dragons show
+- I recorded some signals from the Cleveland Cavaliers 2022 season home opener
+- Based on [@alexmoen955](https://github.com/alexmoen955)'s [feedback](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/2), we now have a script that lets you configure a way to repeat commands to hold bracelet color without copying and pasting a bunch.
+- [@JSMSolns](https://github.com/JSMSolns) set up a super crafty method of [controlling the bracelets with Vixen via an Arduino (https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/5)
+- [@ibrunops](https://github.com/ibrunops) and I have gotten a proof-of-concept for controlling the bracelets from an [Android phone with an IR blaster](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/10) through the irplus app.
+- [@lasry1](https://github.com/lasry1), [@JulioC](https://github.com/lasry1), and I made it so we can control the bracelets via [Broadlink smart home IR devices](https://github.com/danielweidman/flipper-pixmob-ir-codes/issues/1).
+- AND, last but not least, [@sean1983](https://github.com/sean1983) has made [tons of progress](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/8) discovering many more codes, assigning RGB values, investigating packet structure, and more!
 
 ## Instructions
 
