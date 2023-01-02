@@ -35,10 +35,8 @@ def read_recent_color_detector_line():
     with serial.Serial(COLOR_DETECTOR_ARDUINO_SERIAL_PORT, COLOR_DETECTOR_ARDUINO_BAUD_RATE, timeout=1) as ser:
         time.sleep(.1)
         ser.readlines() # Throw away any potential partial lines
-        color_read_line = ser.readline()
-        if color_read_line.count(",") < 2:
-            # Maybe we only read in part of a line due to a race condition; try again
-            color_read_line = ser.readline()
+        color_read_line = str(ser.readline())[2:-5]
+        
     return color_read_line
 
 def send_effect(effect_bits):
