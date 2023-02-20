@@ -99,6 +99,12 @@ There has been a lot of really good activity and progress in this repo since I f
 - [@lasry1](https://github.com/lasry1), [@JulioC](https://github.com/lasry1), and I made it so we can control the bracelets via [Broadlink smart home IR devices](https://github.com/danielweidman/flipper-pixmob-ir-codes/issues/1).
 - AND, last but not least, [@sean1983](https://github.com/sean1983) has made [tons of progress](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/8) discovering many more codes, assigning RGB values, investigating packet structure, and more!
 
+### More Updates!(as of 3/20/2023)
+- [@sean1983](https://github.com/sean1983) has continued to make [tons of progress](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/8) looking at the protocol, and made a much more streamlines brute force process to discover **500+ color commands**!
+- [@NTLS09](https://github.com/NTLS09) put together a pretty comprehensive IR Plus file that can be used with smartphones and other devices.
+- [@sean1983](https://github.com/sean1983) has dumped the contents of an EEPROM component (https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/16)
+
+
 ## Instructions
 
 ***If you have a Flipper Zero device and you would just like to transmit some pre-defined signals without a computer or Arduino, see this repository instead: [https://github.com/danielweidman/flipper-pixmob-ir-codes](https://github.com/danielweidman/flipper-pixmob-ir-codes).***
