@@ -36,10 +36,11 @@ ARDUINO_BAUD_RATE = 115200
 
 ############################################################
 layout = [[sg.Text("", key="scan_text")],
-          [[sg.Button(STARTING_BITS[bit_num], pad=(0, 0), key=f"bit_{bit_num}",
-                      button_color="green" if STARTING_BITS[bit_num] == 1 else "red") for bit_num in
-            range(len(STARTING_BITS))]],
-          [sg.Button("Resend", key="resend"), sg.Button("Resend 10x", key="resend_10x"), sg.Button("Copy to clipboard", key="copy"), sg.Button("Paste from clipboard", key="paste")],
+          [sg.Column([[sg.Button(STARTING_BITS[bit_num], pad=(0, 0), key=f"bit_{bit_num}",
+                                 button_color="green" if STARTING_BITS[bit_num] == 1 else "red")], [sg.Text(bit_num, font='Helvitica 6')]], element_justification='c', pad=(0, 0))  for bit_num in
+                       range(len(STARTING_BITS))],
+          [sg.Button("Resend", key="resend"), sg.Button("Resend 10x", key="resend_10x"),
+           sg.Button("Copy to clipboard", key="copy"), sg.Button("Paste from clipboard", key="paste")],
           [sg.Text("", key="error_text", font='Helvitica 11 bold')],
           [sg.Exit()]]
 
@@ -50,7 +51,8 @@ def send_effect_from_bits(effect_bits):
     arduino_string_ver = to_arduino_string(effect_bits)
     arduino.write(bytes(arduino_string_ver, 'utf-8'))
 
-    #print(f"Sent effect: {','.join([str(bit) for bit in effect_bits])} arduino string: {arduino_string_ver}")
+    # print(f"Sent effect: {','.join([str(bit) for bit in effect_bits])} arduino string: {arduino_string_ver}")
+
 
 def update_button_colors(window):
     try:
@@ -74,25 +76,27 @@ while True:
         print("Will resend")  # Continue without changing bits
     elif event == "resend_10x":
         print("Will resend 10x")
-        for _ in range(9): # 9 because we will also resend one time later
+        for _ in range(9):  # 9 because we will also resend one time later
             new_selected_bits = [int(window[f"bit_{bit_num}"].get_text()) for bit_num in range(len(STARTING_BITS))]
             try:
                 send_effect_from_bits(new_selected_bits)
                 time.sleep(RESEND_DELAY)
             except:
-                pass # Error will still be shown from before
+                pass  # Error will still be shown from before
     elif event == "copy":
         clipboard.copy(str([int(window[f"bit_{bit_num}"].get_text()) for bit_num in range(len(STARTING_BITS))]))
         continue
     elif event == "paste":
         try:
-            pasted_array = clipboard.paste()[1:-1].split(", ") if len(clipboard.paste()[1:-1].split(", ")) == len(clipboard.paste()[1:-1].split(",")) else clipboard.paste()[1:-1].split(",")
+            pasted_array = clipboard.paste()[1:-1].split(", ") if len(clipboard.paste()[1:-1].split(", ")) == len(
+                clipboard.paste()[1:-1].split(",")) else clipboard.paste()[1:-1].split(",")
         except:
             sg.PopupError("Pasted text not in valid format (ex: [1,0,1,0])")
             continue
 
         if len(pasted_array) == len(STARTING_BITS):
-            [window[f"bit_{bit_num}"].update('1' if pasted_array[bit_num] == '1' else 0) for bit_num in range(len(STARTING_BITS))]
+            [window[f"bit_{bit_num}"].update('1' if pasted_array[bit_num] == '1' else 0) for bit_num in
+             range(len(STARTING_BITS))]
             update_button_colors(window)
         else:
             sg.PopupError("Pasted text not in valid format, or not same length as STARTING BITS")
