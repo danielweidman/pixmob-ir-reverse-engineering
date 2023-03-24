@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import serial
 import clipboard
+import time
 from pixmob_conversion_funcs import to_arduino_string
 
 # BitFlipIR
@@ -13,6 +14,9 @@ STARTING_BITS = [1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 
 
 # Make this bigger or smaller to change the size of everything in the GUI
 SIZE_SCALING = 3
+
+# How long to wait between sends after pressing "Resend 10x" (seconds).
+RESEND_DELAY = 0.075
 
 # Which serial port the Arduino is connected to. You can find this with the Arduino IDE or follow these instructions:
 # https://www.mathworks.com/help/supportpkg/arduinoio/ug/find-arduino-port-on-windows-mac-and-linux.html
@@ -35,8 +39,8 @@ layout = [[sg.Text("", key="scan_text")],
           [[sg.Button(STARTING_BITS[bit_num], pad=(0, 0), key=f"bit_{bit_num}",
                       button_color="green" if STARTING_BITS[bit_num] == 1 else "red") for bit_num in
             range(len(STARTING_BITS))]],
-          [sg.Button("Resend", key="resend"), sg.Button("Copy to clipboard", key="copy"),
-           sg.Text("", key="error_text", font='Helvitica 10 bold')],
+          [sg.Button("Resend", key="resend"), sg.Button("Resend 10x", key="resend_10x"), sg.Button("Copy to clipboard", key="copy")],
+          [sg.Text("", key="error_text", font='Helvitica 11 bold')],
           [sg.Exit()]]
 
 window = sg.Window('BitFlipIR', layout, scaling=SIZE_SCALING)
@@ -50,21 +54,33 @@ def send_effect_from_bits(effect_bits):
 
 
 while True:
-
     event, values = window.read()
+
+    # Set all the button colors
+    [window[f"bit_{bit_num}"].update(button_color="green" if window[f"bit_{bit_num}"].get_text() == "1" else "red") for bit_num in range(len(STARTING_BITS))]
+
     if event == sg.WIN_CLOSED or event == 'Exit':
         break
     elif event == "resend":
         print("Will resend")  # Continue without changing bits
+    elif event == "resend_10x":
+        print("Will resend 10x")
+        for _ in range(9): # 9 because we will also resend one time later
+            new_selected_bits = [int(window[f"bit_{bit_num}"].get_text()) for bit_num in range(len(STARTING_BITS))]
+            try:
+                send_effect_from_bits(new_selected_bits)
+                time.sleep(RESEND_DELAY)
+            except:
+                pass # Error will still be shown from before
     elif event == "copy":
         clipboard.copy(str([int(window[f"bit_{bit_num}"].get_text()) for bit_num in range(len(STARTING_BITS))]))
         continue
     elif window[event].get_text() == '1':
         window[event].update('0')
-        window[event].update(button_color="red")
+        window[event].update(button_color="darkred")
     else:
         window[event].update('1')
-        window[event].update(button_color="green")
+        window[event].update(button_color="darkgreen")
 
     new_selected_bits = [int(window[f"bit_{bit_num}"].get_text()) for bit_num in range(len(STARTING_BITS))]
     try:
