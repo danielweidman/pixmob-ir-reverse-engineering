@@ -67,7 +67,7 @@ while True:
     try:
         send_effect_from_bits(new_selected_bits)
     except:
-        sg.PopupError("Too many of same bit in a row, not sending this code")
+        sg.PopupError("Too many of same bit in a row (or started with a 0), not sending this code.")
     else:
         window["scan_text"].update(f"Sent: {new_selected_bits}")
 
