@@ -6,7 +6,7 @@ from pixmob_conversion_funcs import to_arduino_string
 
 # BitFlipIR
 # This is a quick-and-dirty program requested by @Sean1983 to give a user a quick UI with some "bit"
-# values in a list, where they can click on one to "flip" that bit and automatically send the new string via IR
+# values in a list, where they can click on one to "flip" that bit and automatically send the new data via IR
 
 # What to start the window's bit list at
 STARTING_BITS = [1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1,
@@ -39,7 +39,7 @@ layout = [[sg.Text("", key="scan_text")],
           [[sg.Button(STARTING_BITS[bit_num], pad=(0, 0), key=f"bit_{bit_num}",
                       button_color="green" if STARTING_BITS[bit_num] == 1 else "red") for bit_num in
             range(len(STARTING_BITS))]],
-          [sg.Button("Resend", key="resend"), sg.Button("Resend 10x", key="resend_10x"), sg.Button("Copy to clipboard", key="copy")],
+          [sg.Button("Resend", key="resend"), sg.Button("Resend 10x", key="resend_10x"), sg.Button("Copy to clipboard", key="copy"), sg.Button("Paste from clipboard", key="paste")],
           [sg.Text("", key="error_text", font='Helvitica 11 bold')],
           [sg.Exit()]]
 
@@ -50,14 +50,23 @@ def send_effect_from_bits(effect_bits):
     arduino_string_ver = to_arduino_string(effect_bits)
     arduino.write(bytes(arduino_string_ver, 'utf-8'))
 
-    print(f"Sent effect: {','.join([str(bit) for bit in effect_bits])} arduino string: {arduino_string_ver}")
+    #print(f"Sent effect: {','.join([str(bit) for bit in effect_bits])} arduino string: {arduino_string_ver}")
+
+def update_button_colors(window):
+    try:
+        [window[f"bit_{bit_num}"].update(button_color="green" if window[f"bit_{bit_num}"].get_text() == "1" else "red")
+         for bit_num in range(len(STARTING_BITS))]
+    except:
+        time.sleep(0.01)
+        [window[f"bit_{bit_num}"].update(button_color="green" if window[f"bit_{bit_num}"].get_text() == "1" else "red")
+         for bit_num in range(len(STARTING_BITS))]
 
 
 while True:
     event, values = window.read()
 
     # Set all the button colors
-    [window[f"bit_{bit_num}"].update(button_color="green" if window[f"bit_{bit_num}"].get_text() == "1" else "red") for bit_num in range(len(STARTING_BITS))]
+    update_button_colors(window)
 
     if event == sg.WIN_CLOSED or event == 'Exit':
         break
@@ -75,12 +84,23 @@ while True:
     elif event == "copy":
         clipboard.copy(str([int(window[f"bit_{bit_num}"].get_text()) for bit_num in range(len(STARTING_BITS))]))
         continue
+    elif event == "paste":
+        try:
+            pasted_array = clipboard.paste()[1:-1].split(", ") if len(clipboard.paste()[1:-1].split(", ")) == len(clipboard.paste()[1:-1].split(",")) else clipboard.paste()[1:-1].split(",")
+        except:
+            sg.PopupError("Pasted text not in valid format (ex: [1,0,1,0])")
+            continue
+
+        if len(pasted_array) == len(STARTING_BITS):
+            [window[f"bit_{bit_num}"].update('1' if pasted_array[bit_num] == '1' else 0) for bit_num in range(len(STARTING_BITS))]
+            update_button_colors(window)
+        else:
+            sg.PopupError("Pasted text not in valid format, or not same length as STARTING BITS")
+            continue
     elif window[event].get_text() == '1':
-        window[event].update('0')
-        window[event].update(button_color="darkred")
+        window[event].update('0', button_color="darkred")
     else:
-        window[event].update('1')
-        window[event].update(button_color="darkgreen")
+        window[event].update('1', button_color="darkgreen")
 
     new_selected_bits = [int(window[f"bit_{bit_num}"].get_text()) for bit_num in range(len(STARTING_BITS))]
     try:
