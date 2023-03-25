@@ -15,6 +15,7 @@ from shared.pixmob_conversion_funcs import to_arduino_string
 COLORS_TO_TEST_TEXT_FILE_PATH = "misc/test_colors.txt"
 OUTPUT_TEXT_FILE_PATH = "colors_output.txt"
 
+# TODO: Move some of this into the config file, maybe
 
 # Which serial port the Arduino is connected to. You can find this with the Arduino IDE or follow these instructions:
 # https://www.mathworks.com/help/supportpkg/arduinoio/ug/find-arduino-port-on-windows-mac-and-linux.html

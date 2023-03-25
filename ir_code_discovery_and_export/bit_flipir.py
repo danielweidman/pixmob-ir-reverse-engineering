@@ -3,6 +3,7 @@ import serial
 import clipboard
 import time
 from shared.pixmob_conversion_funcs import to_arduino_string
+import shared.config as cfg
 
 # BitFlipIR
 # This is a quick-and-dirty program requested by @Sean1983 to give a user a quick UI with some "bit"
@@ -18,14 +19,7 @@ SIZE_SCALING = 3
 # How long to wait between sends after pressing "Resend 10x" (seconds).
 RESEND_DELAY = 0.075
 
-# Which serial port the Arduino is connected to. You can find this with the Arduino IDE or follow these instructions:
-# https://www.mathworks.com/help/supportpkg/arduinoio/ug/find-arduino-port-on-windows-mac-and-linux.html
-ARDUINO_SERIAL_PORT = "COM5"
-
-# Baud rate of the serial connection set up on the Arduino. It is 115200 in the included sketches.
-ARDUINO_BAUD_RATE = 115200
-
-arduino = serial.Serial(port=ARDUINO_SERIAL_PORT, baudrate=ARDUINO_BAUD_RATE, timeout=.1)
+arduino = serial.Serial(port=cfg.ARDUINO_SERIAL_PORT, baudrate=cfg.ARDUINO_BAUD_RATE, timeout=.1)
 
 ############################################################
 layout = [[sg.Text("", key="scan_text")],
