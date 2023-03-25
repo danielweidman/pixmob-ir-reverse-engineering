@@ -19,6 +19,7 @@ brute_force_base_bits = [
 # You may want to disable this if you are looking for probabilistic effects, or you have tried so many codes that memory
 # usage becomes a problem. Attempted codes are stored in "brute_already_tried.pickle".
 SKIP_ALREADY_TRIED = True
+SKIP_FIRST_N_CODES = 0
 
 ############################################################
 layout = [[sg.Text("", key="scan_text")],
