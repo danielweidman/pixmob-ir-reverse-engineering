@@ -19,6 +19,9 @@ brute_force_base_bits = [
 # You may want to disable this if you are looking for probabilistic effects, or you have tried so many codes that memory
 # usage becomes a problem. Attempted codes are stored in "brute_already_tried.pickle".
 SKIP_ALREADY_TRIED = True
+
+# Change this to skip the first N codes in the sequence (used in the case that you are resuming
+# from a previous brute forcing attempt)
 SKIP_FIRST_N_CODES = 0
 
 # Change this to skip the first N codes in the sequence (used in the case that you are resuming
