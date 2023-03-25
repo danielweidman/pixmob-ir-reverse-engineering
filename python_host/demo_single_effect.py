@@ -1,7 +1,7 @@
 import serial
 import time
-from pixmob_conversion_funcs import to_arduino_string
-from effect_definitions import base_color_effects, tail_codes, special_effects
+from shared.pixmob_conversion_funcs import to_arduino_string
+from shared.effect_definitions import base_color_effects, tail_codes, special_effects
 
 # This file lets you send a single command to bracelets over IR by way of an Arduino connected to this computer
 # running one of the PixMob_Transmitter sketches in the arduino_sender folder. Note that it may take two or more tries

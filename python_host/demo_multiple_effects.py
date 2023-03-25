@@ -1,7 +1,7 @@
 import serial
 import time
-from pixmob_conversion_funcs import to_arduino_string
-from effect_definitions import base_color_effects, tail_codes, special_effects
+from shared.pixmob_conversion_funcs import to_arduino_string
+from shared.effect_definitions import base_color_effects, tail_codes, special_effects
 
 # This file lets you send a series of light effect commands with customizable timings over IR by way of an Arduino
 # connected to this computer running one of the PixMob_Transmitter sketches in the arduino_sender folder. Theoretically
@@ -19,7 +19,7 @@ ARDUINO_SERIAL_PORT = "COM6"
 ARDUINO_BAUD_RATE = 115200
 
 
-# List of of all effects you want to display, in order. Each entry has the effect name, optional tail code, and
+# List of all effects you want to display, in order. Each entry has the effect name, optional tail code, and
 # duration to wait before sending next effect. Note that some effects are long, and the bracelets might not respond
 # to an effect until the current one is finished, so don't set your durations to less than the time it takes for the
 # bracelets to show the effects.

@@ -3,7 +3,7 @@ import serial
 import time
 import random
 import copy
-from pixmob_conversion_funcs import to_arduino_string, to_levels, to_data_timings, to_bits, logic_level_to_data_num
+from shared.pixmob_conversion_funcs import to_arduino_string, to_levels, to_data_timings, to_bits, logic_level_to_data_num
 import clipboard
 import pickle
 import datetime

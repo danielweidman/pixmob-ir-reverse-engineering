@@ -1,7 +1,7 @@
 import re
 import serial
 import time
-from pixmob_conversion_funcs import to_arduino_string
+from shared.pixmob_conversion_funcs import to_arduino_string
 import threading
 
 

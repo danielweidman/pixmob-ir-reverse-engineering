@@ -1,5 +1,5 @@
-from effect_definitions import base_color_effects, tail_codes, special_effects
-from pixmob_conversion_funcs import to_data_timings, to_arduino_string
+from shared.effect_definitions import base_color_effects, tail_codes, special_effects
+from shared.pixmob_conversion_funcs import to_data_timings, to_arduino_string
 import serial
 import time
 

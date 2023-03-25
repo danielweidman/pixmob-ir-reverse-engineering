@@ -1,7 +1,7 @@
 import re
 import serial
 import time
-from pixmob_conversion_funcs import to_arduino_string
+from shared.pixmob_conversion_funcs import to_arduino_string
 
 # This is an experimental file created to try and automatically assign RGB values to color signals
 # as described by sean1983 here: https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/8
