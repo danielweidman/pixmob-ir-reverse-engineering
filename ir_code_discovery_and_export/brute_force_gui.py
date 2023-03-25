@@ -26,6 +26,10 @@ ARDUINO_BAUD_RATE = 115200
 # usage becomes a problem. Attempted codes are stored in "brute_already_tried.pickle".
 SKIP_ALREADY_TRIED = True
 
+# Change this to skip the first N codes in the sequence (used in the case that you are resuming
+# from a previous brute forcing attempt)
+SKIP_FIRST_N_CODES = 0
+
 ############################################################
 layout = [[sg.Text("", key="scan_text")],
           [sg.Button('Hit!', bind_return_key=True)],
