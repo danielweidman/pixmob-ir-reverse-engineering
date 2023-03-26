@@ -1,8 +1,8 @@
-from shared.effect_definitions import base_color_effects, tail_codes, special_effects
-from shared.pixmob_conversion_funcs import to_data_timings, to_arduino_string
+from effect_definitions import base_color_effects, tail_codes, special_effects
+from pixmob_conversion_funcs import to_data_timings, to_arduino_string
 import serial
 import time
-import shared.config as cfg
+import config as cfg
 
 FILE_OUT = "pixmob_good.ir"
 

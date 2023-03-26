@@ -2,8 +2,8 @@ import PySimpleGUI as sg
 import serial
 import clipboard
 import time
-from shared.pixmob_conversion_funcs import to_arduino_string
-import shared.config as cfg
+from pixmob_conversion_funcs import to_arduino_string
+import config as cfg
 
 # BitFlipIR
 # This is a quick-and-dirty program requested by @Sean1983 to give a user a quick UI with some "bit"

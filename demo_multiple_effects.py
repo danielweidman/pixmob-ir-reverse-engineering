@@ -1,47 +1,34 @@
 import serial
 import time
-from shared.pixmob_conversion_funcs import to_arduino_string
-from shared.effect_definitions import base_color_effects, tail_codes, special_effects
-import datetime
-import shared.config as cfg
+from python_tools.pixmob_conversion_funcs import to_arduino_string
+from python_tools.effect_definitions import base_color_effects, tail_codes, special_effects
+import python_tools.config as cfg
+
 # This file lets you send a series of light effect commands with customizable timings over IR by way of an Arduino
 # connected to this computer running one of the PixMob_Transmitter sketches in the arduino_sender folder. Theoretically
 # you could program this to be in sync with a song or something.
 
 # It is recommended you familiar yourself with the "demo_single_effect.py" script before trying this.
-# This "_advanced" version of "demo_multiple_effects.py" allows for transmission of simple color commands repeatedly
-# so bracelets can hold colors without duplicating entries.
 
-# List of of all effects you want to display, in order. Each entry has the effect name, optional tail code, and
+# List of all effects you want to display, in order. Each entry has the effect name, optional tail code, and
 # duration to wait before sending next effect. Note that some effects are long, and the bracelets might not respond
 # to an effect until the current one is finished, so don't set your durations to less than the time it takes for the
 # bracelets to show the effects.
-# "hold_with_repeated_send" can be used to specify whether or not simple colors should be held for the full duration of
-# the effect entry
-# Setting "main_effect" to None will just add a delay with nothing sent
 EFFECTS_TO_SHOW = [
     {
         "main_effect": "RED",
         "tail_code": None,
-        "duration": 5,
-        "hold_with_repeated_send": True
+        "duration": .8
     },
     {
         "main_effect": "GREEN",
         "tail_code": None,
-        "duration": 5,
-        "hold_with_repeated_send": True
+        "duration": .8
     },
     {
         "main_effect": "BLUE",
         "tail_code": None,
-        "duration": 5,
-        "hold_with_repeated_send": True,
-    },
-    {
-        "main_effect": None,
-        "tail_code": None,
-        "duration": .5,
+        "duration": .8
     },
     {
         "main_effect": "TURQUOISE",
@@ -68,9 +55,9 @@ EFFECTS_TO_SHOW = [
 
 #################################
 arduino = serial.Serial(port=cfg.ARDUINO_SERIAL_PORT, baudrate=cfg.ARDUINO_BAUD_RATE, timeout=.1)
-time.sleep(2.5)
+time.sleep(3)
 
-def send_effect(main_effect, tail_code, sleep_after_send=False):
+def send_effect(main_effect, tail_code):
     if main_effect in base_color_effects:
         effect_bits = base_color_effects[main_effect]
         if tail_code:
@@ -89,20 +76,13 @@ def send_effect(main_effect, tail_code, sleep_after_send=False):
                         "options.")
     arduino_string_ver = to_arduino_string(effect_bits)
     arduino.write(bytes(arduino_string_ver, 'utf-8'))
-    if sleep_after_send:
-         # Wait for enough time for the arduino to transmit this code
-        time.sleep(0.01 + 0.0008 * len(effect_bits))
+
+
+
     print(f"Sent effect: {main_effect}, {'no tail effect' if not tail_code else 'tail: ' + tail_code}.")
 
 for effect_instance in EFFECTS_TO_SHOW:
-    if effect_instance.get("main_effect"):
-        if effect_instance.get("hold_with_repeated_send", None):
-            start_time = datetime.datetime.now()
-            while (datetime.datetime.now() - start_time).total_seconds() <= effect_instance["duration"]:
-                send_effect(effect_instance.get("main_effect"), effect_instance.get("tail_code", None), sleep_after_send=True)
-        else:
-            send_effect(effect_instance.get("main_effect"), effect_instance.get("tail_code", None))
-            time.sleep(effect_instance["duration"])
-    else:
-        time.sleep(effect_instance["duration"])
+    send_effect(effect_instance.get("main_effect"), effect_instance.get("tail_code", None))
+    time.sleep(effect_instance["duration"])
+
 time.sleep(0.1)
