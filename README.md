@@ -38,7 +38,7 @@ The raw IR signal files recorded by the Flipper were inspected and analyzed. It 
 
 Through trial and error, it was determined that the signal recording actually contained multiple &quot;copies&quot; of the white flash signal, and the recording can be cropped down significantly and still produce the same effect. The minimum necessary segment of the recording required to elicit the white flash bracelet effect spans the samples between each of the ~6300 dots on the graph above.
 
-From plots like this, we noticed that the transition intervals cluster around multiples of 700 microseconds. With this knowledge, we translated the signals into a binary representation, with each bit representing a 700 microsecond time interval.
+From plots like this, we noticed that the transition intervals cluster around multiples of 700 microseconds. With this knowledge, we translated the signals into a binary representation, with each bit representing a 700 microsecond time interval. *Update: based on the patent US-10863607-B2 ([PDF link](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10863607)) we determined this value is probably actually 694.44 microseconds.*
 
 ![Examples of recorded packets](media/fig_1_packet_examples.png)
 
