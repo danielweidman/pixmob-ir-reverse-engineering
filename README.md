@@ -127,7 +127,7 @@ Basically, the steps are:
 1. Connect an IR LED/transmitter to the Arduino board.
 2. Connect the Arduino to a computer by USB.
 3. Upload the sketch from &quot;arduino\_sender&quot; to the Arduino. You may need to install the IRremote or IRremoteESP8266 library first. Make sure to set the IR tranmitter data pin variable and note down the port/device address (COM port on Windows, /dev/\<something\> on Linux and macOS) of the Arduino.
-4. Set the `ARDUINO_SERIAL_PORT` in "shared/config.py". If using a lower-power Arduino device like an Arduino Nano, also set `WAIT_BEFORE_SEND` to True.
+4. Set the `ARDUINO_SERIAL_PORT` in "python_tools/config.py". If using a lower-power Arduino device like an Arduino Nano, also set `WAIT_BEFORE_SEND` to True.
 5. Run the script. Your PixMob device(s) should light up!
 
 More specific instructions are in the README files in the relevant folders. Feel free to open an Issue if you need help.

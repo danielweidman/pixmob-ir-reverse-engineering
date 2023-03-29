@@ -8,7 +8,7 @@ import python_tools.config as cfg
 # running one of the PixMob_Transmitter sketches in the arduino_sender folder. Note that it may take two or more tries
 # to make bracelets react after they have been inactive for a while.
 
-# Set the ALL_CAPS parameters below and run the script.
+# Set the ALL_CAPS parameters below and run the script. Also set ARDUINO_SERIAL_PORT and ARDUINO_BAUD_RATE
 
 # Which effect/color to display on the lights. See base_color_effects or special_effects in effect_definitions.py for
 # options.
