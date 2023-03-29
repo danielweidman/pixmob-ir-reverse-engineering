@@ -12,6 +12,9 @@ import python_tools.config as cfg
 # This "_advanced" version of "demo_multiple_effects.py" allows for transmission of simple color commands repeatedly
 # so bracelets can hold colors without duplicating entries.
 
+# Set the ALL_CAPS parameters below and run the script. Also set ARDUINO_SERIAL_PORT and
+# ARDUINO_BAUD_RATE in python_tools/config.py
+
 # List of of all effects you want to display, in order. Each entry has the effect name, optional tail code, and
 # duration to wait before sending next effect. Note that some effects are long, and the bracelets might not respond
 # to an effect until the current one is finished, so don't set your durations to less than the time it takes for the
