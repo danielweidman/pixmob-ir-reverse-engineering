@@ -96,13 +96,13 @@ There has been a lot of really good activity and progress in this repo since I f
 - [@hckrdan](https://github.com/hckrdan) made some recordings using a signal analyzer with a Raspberry Pi and IR receiver at an Imagine Dragons show
 - I recorded some signals from the Cleveland Cavaliers 2022 season home opener
 - Based on [@alexmoen955](https://github.com/alexmoen955)'s [feedback](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/2), we now have a script that lets you configure a way to repeat commands to hold bracelet color without copying and pasting a bunch.
-- [@JSMSolns](https://github.com/JSMSolns) set up a super crafty method of [controlling the bracelets with Vixen via an Arduino (https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/5)
+- [@JSMSolns](https://github.com/JSMSolns) set up a super crafty method of [controlling the bracelets with Vixen via an Arduino](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/5)
 - [@ibrunops](https://github.com/ibrunops) and I have gotten a proof-of-concept for controlling the bracelets from an [Android phone with an IR blaster](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/10) through the irplus app.
 - [@lasry1](https://github.com/lasry1), [@JulioC](https://github.com/lasry1), and I made it so we can control the bracelets via [Broadlink smart home IR devices](https://github.com/danielweidman/flipper-pixmob-ir-codes/issues/1).
 - AND, last but not least, [@sean1983](https://github.com/sean1983) has made [tons of progress](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/8) discovering many more codes, assigning RGB values, investigating packet structure, and more!
 
 ### More Updates! (as of 2/20/2023)
-- [@sean1983](https://github.com/sean1983) has continued to make [tons of progress](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/8) looking at the protocol, and made a much more streamlines brute force process to discover **500+ color commands**!
+- [@sean1983](https://github.com/sean1983) has continued to make [tons of progress](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/8) looking at the protocol, and made a much more streamlined brute force process to discover **500+ color commands**!
 - [@NTLS09](https://github.com/NTLS09) put together a pretty comprehensive IR Plus file that can be used with smartphones and other devices.
 - [@sean1983](https://github.com/sean1983) has dumped the contents of an EEPROM component (https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/16)
 
