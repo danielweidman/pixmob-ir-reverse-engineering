@@ -2,6 +2,7 @@ from effect_definitions import base_color_effects, tail_codes, special_effects
 from pixmob_conversion_funcs import to_data_timings, to_arduino_string
 import serial
 import time
+import config as cfg
 
 FILE_OUT = "pixmob_good.ir"
 
@@ -9,15 +10,7 @@ FILE_OUT = "pixmob_good.ir"
 # is just so the script can send the effects with the Arduino as it goes through and let the user choose for each if
 # they want to put it in the Flipper file.
 
-# Which serial port the Arduino is connected to. You can find this with the Arduino IDE or follow these instructions:
-# https://www.mathworks.com/help/supportpkg/arduinoio/ug/find-arduino-port-on-windows-mac-and-linux.html
-ARDUINO_SERIAL_PORT = "COM6"
-
-# Baud rate of the serial connection set up on the Arduino. It is 115200 in the included sketches.
-ARDUINO_BAUD_RATE = 115200
-
-
-arduino = serial.Serial(port=ARDUINO_SERIAL_PORT, baudrate=ARDUINO_BAUD_RATE, timeout=.1)
+arduino = serial.Serial(port=cfg.ARDUINO_SERIAL_PORT, baudrate=cfg.ARDUINO_BAUD_RATE, timeout=.1)
 time.sleep(2.5)
 
 def make_code_entry(name, data_string):

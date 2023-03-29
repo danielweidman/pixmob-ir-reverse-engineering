@@ -3,6 +3,7 @@ import sys
 import time
 from serial_brute_forcer_class import ScopedBruteForcer
 from effect_definitions import base_color_effects, tail_codes, special_effects
+import config as cfg
 
 # This script is used to perform scoped brute forcing of IR codes. You specify a list of packet bits, with which ones to
 # treat as constant and which ones to include in brute force sequences.
@@ -13,13 +14,6 @@ from effect_definitions import base_color_effects, tail_codes, special_effects
 brute_force_base_bits = [
     1, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1
 ]
-
-# Which serial port the Arduino is connected to. You can find this with the Arduino IDE or follow these instructions:
-# https://www.mathworks.com/help/supportpkg/arduinoio/ug/find-arduino-port-on-windows-mac-and-linux.html
-ARDUINO_SERIAL_PORT = "COM6"
-
-# Baud rate of the serial connection set up on the Arduino. It is 115200 in the included sketches.
-ARDUINO_BAUD_RATE = 115200
 
 # Whether or not to keep a persistent list of all tried IR codes and skips sending codes that have been tried before.
 # You may want to disable this if you are looking for probabilistic effects, or you have tried so many codes that memory
@@ -37,7 +31,7 @@ layout = [[sg.Text("", key="scan_text")],
 
 window = sg.Window('Window that stays open', layout)
 
-brute_forcer = ScopedBruteForcer(brute_force_base_bits, ARDUINO_SERIAL_PORT, ARDUINO_BAUD_RATE,
+brute_forcer = ScopedBruteForcer(brute_force_base_bits, cfg.ARDUINO_SERIAL_PORT, cfg.ARDUINO_BAUD_RATE,
                                  ignore_effects_dict={**base_color_effects, **special_effects},
                                  skip_already_tried=SKIP_ALREADY_TRIED, timeout=0)
 

@@ -1,8 +1,9 @@
 import serial
 import time
-from pixmob_conversion_funcs import to_arduino_string
-from effect_definitions import base_color_effects, tail_codes, special_effects
+from python_tools.pixmob_conversion_funcs import to_arduino_string
+from python_tools.effect_definitions import base_color_effects, tail_codes, special_effects
 import datetime
+import python_tools.config as cfg
 # This file lets you send a series of light effect commands with customizable timings over IR by way of an Arduino
 # connected to this computer running one of the PixMob_Transmitter sketches in the arduino_sender folder. Theoretically
 # you could program this to be in sync with a song or something.
@@ -11,15 +12,8 @@ import datetime
 # This "_advanced" version of "demo_multiple_effects.py" allows for transmission of simple color commands repeatedly
 # so bracelets can hold colors without duplicating entries.
 
-# Set the ALL_CAPS parameters below and run the script.
-
-# Which serial port the Arduino is connected to. You can find this with the Arduino IDE or follow these instructions:
-# https://www.mathworks.com/help/supportpkg/arduinoio/ug/find-arduino-port-on-windows-mac-and-linux.html
-ARDUINO_SERIAL_PORT = "COM6"
-
-# Baud rate of the serial connection set up on the Arduino. It is 115200 in the included sketches.
-ARDUINO_BAUD_RATE = 115200
-
+# Set the ALL_CAPS parameters below and run the script. Also set ARDUINO_SERIAL_PORT and
+# ARDUINO_BAUD_RATE in python_tools/config.py
 
 # List of of all effects you want to display, in order. Each entry has the effect name, optional tail code, and
 # duration to wait before sending next effect. Note that some effects are long, and the bracelets might not respond
@@ -76,7 +70,7 @@ EFFECTS_TO_SHOW = [
 
 
 #################################
-arduino = serial.Serial(port=ARDUINO_SERIAL_PORT, baudrate=ARDUINO_BAUD_RATE, timeout=.1)
+arduino = serial.Serial(port=cfg.ARDUINO_SERIAL_PORT, baudrate=cfg.ARDUINO_BAUD_RATE, timeout=.1)
 time.sleep(2.5)
 
 def send_effect(main_effect, tail_code, sleep_after_send=False):

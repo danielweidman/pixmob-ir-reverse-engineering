@@ -38,7 +38,7 @@ The raw IR signal files recorded by the Flipper were inspected and analyzed. It 
 
 Through trial and error, it was determined that the signal recording actually contained multiple &quot;copies&quot; of the white flash signal, and the recording can be cropped down significantly and still produce the same effect. The minimum necessary segment of the recording required to elicit the white flash bracelet effect spans the samples between each of the ~6300 dots on the graph above.
 
-From plots like this, we noticed that the transition intervals cluster around multiples of 700 microseconds. With this knowledge, we translated the signals into a binary representation, with each bit representing a 700 microsecond time interval.
+From plots like this, we noticed that the transition intervals cluster around multiples of 700 microseconds. With this knowledge, we translated the signals into a binary representation, with each bit representing a 700 microsecond time interval. *Update: based on the patent US-10863607-B2 ([PDF link](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10863607)) we determined this value is probably actually 694.44 microseconds.*
 
 ![Examples of recorded packets](media/fig_1_packet_examples.png)
 
@@ -126,9 +126,10 @@ You will need:
 Basically, the steps are:
 1. Connect an IR LED/transmitter to the Arduino board.
 2. Connect the Arduino to a computer by USB.
-3. Upload the sketch from &quot;arduino\_sender&quot; to the Arduino. You may need to install the IRremote or IRremoteESP8266 library first. Make sure to set the IR tranmitter data pin variable and note down the port/device address (COM port on Windows) of the Arduino.
-4. Set the ARDUINO_SERIAL_PORT at the top of &quot;python\_host/demo_single_effect.py&quot; or &quot;python\_host/demo_multiple_effects.py&quot; script. If using a lower-power Arduino device like an Arduino Nano, also set WAIT_BEFORE_SEND to True.
-5. Run the script. Your PixMob device(s) should light up!
+3. Upload the sketch from &quot;arduino\_sender&quot; to the Arduino. You may need to install the IRremote or IRremoteESP8266 library first. Make sure to set the IR tranmitter data pin variable and note down the port/device address (COM port on Windows, /dev/\<something\> on Linux and macOS) of the Arduino.
+4. Set the `ARDUINO_SERIAL_PORT` in "python_tools/config.py". If using a lower-power Arduino device like an Arduino Nano, also set `WAIT_BEFORE_SEND` to True.
+5. Run the demo script. Your PixMob device(s) should light up!
+   Use demo_single_effect.py, demo_multiple_effects.py, or demo_multiple_effects_advanced.py. Instructions are provided in each file.
 
 More specific instructions are in the README files in the relevant folders. Feel free to open an Issue if you need help.
 
