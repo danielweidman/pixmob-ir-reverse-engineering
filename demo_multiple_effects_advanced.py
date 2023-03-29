@@ -1,9 +1,9 @@
 import serial
 import time
-from pixmob_conversion_funcs import to_arduino_string
-from effect_definitions import base_color_effects, tail_codes, special_effects
+from python_tools.pixmob_conversion_funcs import to_arduino_string
+from python_tools.effect_definitions import base_color_effects, tail_codes, special_effects
 import datetime
-import config as cfg
+import python_tools.config as cfg
 # This file lets you send a series of light effect commands with customizable timings over IR by way of an Arduino
 # connected to this computer running one of the PixMob_Transmitter sketches in the arduino_sender folder. Theoretically
 # you could program this to be in sync with a song or something.
