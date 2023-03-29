@@ -24,10 +24,6 @@ SKIP_ALREADY_TRIED = True
 # from a previous brute forcing attempt)
 SKIP_FIRST_N_CODES = 0
 
-# Change this to skip the first N codes in the sequence (used in the case that you are resuming
-# from a previous brute forcing attempt)
-SKIP_FIRST_N_CODES = 0
-
 ############################################################
 layout = [[sg.Text("", key="scan_text")],
           [sg.Button('Hit!', bind_return_key=True)],

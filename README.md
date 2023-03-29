@@ -133,8 +133,6 @@ Basically, the steps are:
 
 More specific instructions are in the README files in the relevant folders. Feel free to open an Issue if you need help.
 
-
-
 **Replacing the batteries:**
 
 You will, of course, need non-empty batteries in your PixMob bracelet/other device to make it work. If you received the bracelet at an event more than a few days ago, you will most likely need to replace the batteries. The process for doing this differs by bracelet type. This is easier on some models than others.
