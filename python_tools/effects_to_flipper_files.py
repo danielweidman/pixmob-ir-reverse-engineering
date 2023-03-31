@@ -1,5 +1,5 @@
 from effect_definitions import base_color_effects, tail_codes, special_effects
-from pixmob_conversion_funcs import to_data_timings, to_arduino_string
+from pixmob_conversion_funcs import bits_to_run_length_microseconds, bits_to_arduino_string
 import serial
 import time
 import config as cfg
@@ -34,7 +34,7 @@ def send_effect(main_effect, tail_code):
     else:
         raise Exception("Invalid MAIN_EFFECT. See base_color_effects and special_effects in effect_definitions.py for "
                         "options.")
-    arduino_string_ver = to_arduino_string(effect_bits)
+    arduino_string_ver = bits_to_arduino_string(effect_bits)
     arduino.write(bytes(arduino_string_ver, 'utf-8'))
 
     print(f"Sent effect: {main_effect}, {'no tail effect' if not tail_code else 'tail: ' + tail_code}.")
@@ -52,7 +52,7 @@ with open(FILE_OUT, "w") as f:
             send_effect(effect, tail_code) if tail_code else send_effect(effect, None)
             res = "y" #input("include this one? (y/n)")
             if res == "y":
-                data_string = ' '.join([str(timing) for timing in to_data_timings(bits + tail_bits)])
+                data_string = ' '.join([str(timing) for timing in bits_to_run_length_microseconds(bits + tail_bits)])
                 if not tail_code:
                     flipper_entry = make_code_entry(effect, data_string)
                 else:

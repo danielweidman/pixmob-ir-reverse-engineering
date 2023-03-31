@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 import serial
 import clipboard
 import time
-from pixmob_conversion_funcs import to_arduino_string
+from pixmob_conversion_funcs import bits_to_arduino_string
 import config as cfg
 
 # BitFlipIR
@@ -35,7 +35,7 @@ window = sg.Window('BitFlipIR', layout, scaling=SIZE_SCALING)
 
 
 def send_effect_from_bits(effect_bits):
-    arduino_string_ver = to_arduino_string(effect_bits)
+    arduino_string_ver = bits_to_arduino_string(effect_bits)
     arduino.write(bytes(arduino_string_ver, 'utf-8'))
 
     # print(f"Sent effect: {','.join([str(bit) for bit in effect_bits])} arduino string: {arduino_string_ver}")

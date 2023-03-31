@@ -1,7 +1,7 @@
 import re
 import serial
 import time
-from pixmob_conversion_funcs import to_arduino_string
+from pixmob_conversion_funcs import bits_to_arduino_string
 
 # This is an experimental file created to try and automatically assign RGB values to color signals
 # as described by sean1983 here: https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/8
@@ -40,7 +40,7 @@ def read_recent_color_detector_line():
 
 
 def send_effect(effect_bits):
-    arduino_string_ver = to_arduino_string(effect_bits)
+    arduino_string_ver = bits_to_arduino_string(effect_bits)
     sender_arduino.write(bytes(arduino_string_ver, 'utf-8'))
 
 

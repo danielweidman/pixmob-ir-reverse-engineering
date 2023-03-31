@@ -1,6 +1,6 @@
 import serial
 import time
-from python_tools.pixmob_conversion_funcs import to_arduino_string
+from python_tools.pixmob_conversion_funcs import bits_to_arduino_string
 from python_tools.effect_definitions import base_color_effects, tail_codes, special_effects
 import python_tools.config as cfg
 
@@ -77,7 +77,7 @@ def send_effect(main_effect, tail_code):
     else:
         raise Exception("Invalid MAIN_EFFECT. See base_color_effects and special_effects in effect_definitions.py for "
                         "options.")
-    arduino_string_ver = to_arduino_string(effect_bits)
+    arduino_string_ver = bits_to_arduino_string(effect_bits)
     arduino.write(bytes(arduino_string_ver, 'utf-8'))
 
 

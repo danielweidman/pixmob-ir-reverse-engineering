@@ -9,3 +9,6 @@ ARDUINO_BAUD_RATE = 115200
 
 # Set to True if using a lower power microcontroller (like an Arduino Nano instead of ESP board) and you have issues
 WAIT_BEFORE_SEND = False
+
+# Experimentally determined to be 700 microseconds, now we think it's 694.44
+PULSE_LENGTH = 694
