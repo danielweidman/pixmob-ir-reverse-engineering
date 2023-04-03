@@ -42,7 +42,7 @@ window = sg.Window('BitFlipIR', layout, scaling=SIZE_SCALING)
 #    arduino_string_ver = to_arduino_string(effect_bits)
 #    arduino.write(bytes(arduino_string_ver, 'utf-8'))
 
-def send_effect(send_bits, effect_bits, tail_code, tail_code_bits):
+def send_effect(effect_bits, tail_code, tail_code_bits):
     if tail_code:
         tail_code_bits = [int(window[f"bit_{tail_bit_num}"].get_text()) for tail_bit_num in range(len(TAIL_START_BITS))]
         send_bits = effect_bits + tail_code_bits
@@ -92,7 +92,7 @@ while True:
         for _ in range(9):  # 9 because we will also resend one time later
             new_selected_bits = [int(window[f"bit_{bit_num}"].get_text()) for bit_num in range(len(STARTING_BITS))]
             try:
-                send_effect(new_selected_bits, tailcode_mode)
+                send_effect(new_selected_bits, tail_code_bits)
                 time.sleep(RESEND_DELAY)
             except:
                 pass  # Error will still be shown from before
