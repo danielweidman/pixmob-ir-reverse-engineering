@@ -24,7 +24,7 @@ tail_bit_num = "00"
 arduino = serial.Serial(port=cfg.ARDUINO_SERIAL_PORT, baudrate=cfg.ARDUINO_BAUD_RATE, timeout=.1)
 
 ############################################################
-tailM = [sg.Column([[sg.Button(TAIL_START_BITS[tail_bit_num], visible = tailcode_mode, pad=(0, 0), key=f"bit_{tail_bit_num}", button_color="green" if TAIL_START_BITS[tail_bit_num] == 1 else "red")], [sg.Text(tail_bit_num, font='Helvitica 6')]], element_justification='c', visible = tailcode_mode, pad=(0, 0))  for tail_bit_num in range(len(TAIL_START_BITS))],
+tailM = [sg.Column([[sg.Button(TAIL_START_BITS[tail_bit_num], pad=(0, 0), key=f"bit_{tail_bit_num}", button_color="green" if TAIL_START_BITS[tail_bit_num] == 1 else "red")], [sg.Text(tail_bit_num, font='Helvitica 6')]], element_justification='c', pad=(0, 0))  for tail_bit_num in range(len(TAIL_START_BITS))],
 
 layout = [[sg.Text("", key="scan_text")],
           [sg.Column([[sg.Button(STARTING_BITS[bit_num], pad=(0, 0), key=f"bit_{bit_num}", button_color="green" if STARTING_BITS[bit_num] == 1 else "red")], [sg.Text(bit_num, font='Helvitica 6')]], element_justification='c', pad=(0, 0))  for bit_num in range(len(STARTING_BITS))],
@@ -37,20 +37,18 @@ layout = [[sg.Text("", key="scan_text")],
 window = sg.Window('BitFlipIR', layout, scaling=SIZE_SCALING)
 
 
-#def send_effect(effect_bits):
+# def send_effect(effect_bits):
 #    arduino_string_ver = to_arduino_string(effect_bits)
 #    arduino.write(bytes(arduino_string_ver, 'utf-8'))
 
-
-
 def send_effect(effect_bits, tail_code):
-        if tail_code:
-             tait_code = tail_bit_num
-                effect_bits = effect_bits + tail_code
-        else:
-             effect_bits = effect_bits
+    if tail_code:
+        tail_code = tail_bit_num
+        send_bits = effect_bits + tail_code
+    else:
+        send_bits = effect_bits
 
-    arduino_string_ver = to_arduino_string(effect_bits)
+    arduino_string_ver = to_arduino_string(send_bits)
     arduino.write(bytes(arduino_string_ver, 'utf-8'))
 
     # print(f"Sent effect: {','.join([str(bit) for bit in effect_bits])} arduino string: {arduino_string_ver}")
