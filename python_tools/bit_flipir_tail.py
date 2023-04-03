@@ -44,25 +44,16 @@ window = sg.Window('BitFlipIR', layout, scaling=SIZE_SCALING)
 
 
 def send_effect(effect_bits, tail_code):
-    if effect_bits in base_color_effects:
-        effect_bits = base_color_effects[effect_bits]
         if tail_code:
-            if tail_code in tail_codes:
-                effect_bits = effect_bits + tail_codes[tail_code]
-            else:
-                raise sg.PopupError("Invalid tail code name. See tail_codes in effect_definitions.py for options.")
-        print(f"Sent effect: {','.join([str(bit) for bit in effect_bits])} arduino string: {arduino_string_ver}")
-    else:
-        raise sg.PopupError("Invalid effect_bits. See base_color_effects and special_effects in effect_definitions.py for "
-                        "options.")
+             tait_code = tail_bit_num
+                effect_bits = effect_bits + tail_code
+        else:
+             effect_bits = effect_bits
+
     arduino_string_ver = to_arduino_string(effect_bits)
     arduino.write(bytes(arduino_string_ver, 'utf-8'))
 
-
-
     # print(f"Sent effect: {','.join([str(bit) for bit in effect_bits])} arduino string: {arduino_string_ver}")
-
-
 
 def update_button_colors(window):
     try:
@@ -76,7 +67,6 @@ def update_button_colors(window):
          for bit_num in range(len(STARTING_BITS))]
         [window[f"bit_{tail_bit_num}"].update(button_color="green" if window[f"bit_{tail_bit_num}"].get_text() == "1" else "red")
          for tail_bit_num in range(len(TAIL_START_BITS))]
-
 
 while True:
     event, values = window.read()
