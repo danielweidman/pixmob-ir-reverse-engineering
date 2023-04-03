@@ -20,11 +20,11 @@ SIZE_SCALING = 3
 RESEND_DELAY = 0.075
 
 tailcode_mode = True
-tail_bit_num = "00"
+#tail_bit_num = "00"
 arduino = serial.Serial(port=cfg.ARDUINO_SERIAL_PORT, baudrate=cfg.ARDUINO_BAUD_RATE, timeout=.1)
 
 ############################################################
-tailM = [sg.Column([[sg.Button(TAIL_START_BITS[tail_bit_num], pad=(0, 0), key=f"bit_{tail_bit_num}", button_color="green" if TAIL_START_BITS[tail_bit_num] == 1 else "red")], [sg.Text(tail_bit_num, font='Helvitica 6')]], element_justification='c', pad=(0, 0))  for tail_bit_num in range(len(TAIL_START_BITS))]
+tailM = tailM = [sg.Column([[sg.Button(TAIL_START_BITS[tail_bit_num], pad=(0, 0), key=f"bit_{tail_bit_num}", button_color="green" if TAIL_START_BITS[tail_bit_num] == 1 else "red")], [sg.Text(tail_bit_num, font='Helvitica 6')]], element_justification='c', pad=(0, 0))  for tail_bit_num in range(len(TAIL_START_BITS))],
 
 layout = [[sg.Text("", key="scan_text")],
           [sg.Column([[sg.Button(STARTING_BITS[bit_num], pad=(0, 0), key=f"bit_{bit_num}", button_color="green" if STARTING_BITS[bit_num] == 1 else "red")], [sg.Text(bit_num, font='Helvitica 6')]], element_justification='c', pad=(0, 0))  for bit_num in range(len(STARTING_BITS))],
