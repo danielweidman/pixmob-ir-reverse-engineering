@@ -14,7 +14,7 @@ STARTING_BITS = [1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 
                  0, 0, 0, 0, 1]
 TAIL_START_BITS = [0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1]
 # Make this bigger or smaller to change the size of everything in the GUI
-SIZE_SCALING = 3
+SIZE_SCALING = 2.3
 
 # How long to wait between sends after pressing "Resend 10x" (seconds).
 RESEND_DELAY = 0.075
@@ -24,7 +24,7 @@ tailcode_mode = True
 arduino = serial.Serial(port=cfg.ARDUINO_SERIAL_PORT, baudrate=cfg.ARDUINO_BAUD_RATE, timeout=.1)
 
 ############################################################
-tailM = tailM = [sg.Column([[sg.Button(TAIL_START_BITS[tail_bit_num], pad=(0, 0), key=f"bit_{tail_bit_num}", button_color="green" if TAIL_START_BITS[tail_bit_num] == 1 else "red")], [sg.Text(tail_bit_num, font='Helvitica 6')]], element_justification='c', pad=(0, 0))  for tail_bit_num in range(len(TAIL_START_BITS))],
+tailM = [sg.Column([[sg.Button(TAIL_START_BITS[tail_bit_num], pad=(0, 0), key=f"bit_{tail_bit_num}", button_color="green" if TAIL_START_BITS[tail_bit_num] == 1 else "red")], [sg.Text(tail_bit_num, font='Helvitica 6')]], element_justification='c', pad=(0, 0))  for tail_bit_num in range(len(TAIL_START_BITS))],
 
 layout = [[sg.Text("", key="scan_text")],
           [sg.Column([[sg.Button(STARTING_BITS[bit_num], pad=(0, 0), key=f"bit_{bit_num}", button_color="green" if STARTING_BITS[bit_num] == 1 else "red")], [sg.Text(bit_num, font='Helvitica 6')]], element_justification='c', pad=(0, 0))  for bit_num in range(len(STARTING_BITS))],
@@ -32,7 +32,8 @@ layout = [[sg.Text("", key="scan_text")],
           [sg.Button("Resend", key="resend"), sg.Button("Resend 10x", key="resend_10x"), sg.Button("Use Tailcode", key="use_tailcode"),
            sg.Push(), sg.Button("Copy to clipboard", key="copy"), sg.Button("Paste from clipboard", key="paste")],
           [sg.Text("", key="error_text", font='Helvitica 11 bold')],
-          [sg.Exit()]]
+          [sg.Exit()]
+
 
 window = sg.Window('BitFlipIR', layout, scaling=SIZE_SCALING)
 
