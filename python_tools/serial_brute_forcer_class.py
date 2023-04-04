@@ -3,7 +3,7 @@ import serial
 import time
 import random
 import copy
-from pixmob_conversion_funcs import bits_to_arduino_string, bits_to_run_lengths_pulses, bits_to_run_length_microseconds
+from pixmob_conversion_funcs import bits_to_arduino_string, bits_to_run_lengths_pulses, bits_to_run_lengths_microseconds
 import clipboard
 import pickle
 import datetime
@@ -50,7 +50,7 @@ class ScopedBruteForcer():
             print(f"Already-found bit string: {out}")
             return False
         try:
-            data_time_list = bits_to_run_length_microseconds(out)
+            data_time_list = bits_to_run_lengths_microseconds(out)
         except:
             print(f"Invalid bit string: {out}")
             return False

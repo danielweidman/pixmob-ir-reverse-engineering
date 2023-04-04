@@ -1,5 +1,5 @@
 from effect_definitions import base_color_effects, tail_codes, special_effects
-from pixmob_conversion_funcs import bits_to_run_length_microseconds, bits_to_arduino_string
+from pixmob_conversion_funcs import bits_to_run_lengths_microseconds, bits_to_arduino_string
 import serial
 import time
 import config as cfg
@@ -52,7 +52,7 @@ with open(FILE_OUT, "w") as f:
             send_effect(effect, tail_code) if tail_code else send_effect(effect, None)
             res = "y" #input("include this one? (y/n)")
             if res == "y":
-                data_string = ' '.join([str(timing) for timing in bits_to_run_length_microseconds(bits + tail_bits)])
+                data_string = ' '.join([str(timing) for timing in bits_to_run_lengths_microseconds(bits + tail_bits)])
                 if not tail_code:
                     flipper_entry = make_code_entry(effect, data_string)
                 else:
