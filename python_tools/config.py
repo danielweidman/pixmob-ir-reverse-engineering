@@ -11,5 +11,5 @@ ARDUINO_BAUD_RATE = 115200
 WAIT_BEFORE_SEND = False
 
 # Experimentally determined to be 700 microseconds, now we think it's 694.44. It needs to be an integer for this
-# codebase to function, though, which is why 694
+# codebase to function, though, which is why 694 is the default here
 PULSE_LENGTH = 694
