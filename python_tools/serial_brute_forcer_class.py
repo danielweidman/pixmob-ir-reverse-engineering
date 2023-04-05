@@ -1,12 +1,10 @@
 # Importing Libraries
 import serial
 import time
-import random
 import copy
-from pixmob_conversion_funcs import bits_to_arduino_string, bits_to_run_lengths_pulses, bits_to_run_lengths_microseconds
+from pixmob_conversion_funcs import bits_to_arduino_string, bits_to_run_lengths_pulses
 import clipboard
 import pickle
-import datetime
 
 
 class ScopedBruteForcer():

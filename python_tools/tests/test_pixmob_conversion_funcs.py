@@ -1,8 +1,6 @@
 import unittest
 from unittest import TestCase
 import python_tools.pixmob_conversion_funcs as funcs
-import python_tools.config as cfg
-
 
 class Test(TestCase):
     def test_bits_to_hex(self):
