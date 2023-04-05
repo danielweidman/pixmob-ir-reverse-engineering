@@ -43,7 +43,7 @@ def run_lengths_to_bits(run_length_list, pulse_length=cfg.PULSE_LENGTH, acceptab
     # greater than that fraction of the pulse length.
     # Example [700, 2100, 1400] -> [1, 0, 0, 0, 1, 1]
     # Additional example with error check: If acceptable_error is set to .1, [700, 1900, 1400] would cause an error
-    # because 1900 is 200 off from the closest multiple of 700, which is larger than .1 * 700 = 70
+    # because 1900 is 200 off from the closest multiple of 700, and 200 is larger than .1 * 700 = 70
     bit_list = []
     bit = 1
     for run_length in run_length_list:
