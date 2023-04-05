@@ -50,12 +50,10 @@ class ScopedBruteForcer():
             print(f"Already-found bit string: {out}")
             return False
         try:
-            data_time_list = bits_to_run_lengths_microseconds(out)
-        except:
+            arduino_string_ver = bits_to_arduino_string(out)
+        except ValueError:
             print(f"Invalid bit string: {out}")
             return False
-
-        arduino_string_ver = bits_to_arduino_string(out)
         print(f"{bits_to_run_lengths_pulses(out)},")
         for try_num in range(1):
             self.arduino.write(bytes(arduino_string_ver, 'utf-8'))
