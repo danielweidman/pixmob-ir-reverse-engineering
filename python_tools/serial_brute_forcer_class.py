@@ -1,12 +1,10 @@
 # Importing Libraries
 import serial
 import time
-import random
 import copy
-from pixmob_conversion_funcs import to_arduino_string, to_levels, to_data_timings, to_bits, logic_level_to_data_num
+from pixmob_conversion_funcs import bits_to_arduino_string, bits_to_run_lengths_pulses
 import clipboard
 import pickle
-import datetime
 
 
 class ScopedBruteForcer():
@@ -50,13 +48,11 @@ class ScopedBruteForcer():
             print(f"Already-found bit string: {out}")
             return False
         try:
-            data_time_list = to_data_timings(out)
-        except:
+            arduino_string_ver = bits_to_arduino_string(out)
+        except ValueError:
             print(f"Invalid bit string: {out}")
             return False
-
-        arduino_string_ver = to_arduino_string(out)
-        print(f"{to_levels(out)},")
+        print(f"{bits_to_run_lengths_pulses(out)},")
         for try_num in range(1):
             self.arduino.write(bytes(arduino_string_ver, 'utf-8'))
             time.sleep(self.timeout)
