@@ -1,8 +1,7 @@
 import PySimpleGUI as sg
-import sys
 import time
 from serial_brute_forcer_class import ScopedBruteForcer
-from effect_definitions import base_color_effects, tail_codes, special_effects
+from effect_definitions import base_color_effects, special_effects
 import config as cfg
 
 # This script is used to perform scoped brute forcing of IR codes. You specify a list of packet bits, with which ones to
