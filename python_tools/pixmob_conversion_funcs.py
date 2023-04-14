@@ -76,16 +76,22 @@ def bits_to_arduino_string(bit_list):
     return out + ","
 
 
-def split_run_length_list(run_length_list, max_zeroes=7, pulse_length=694):
+def split_run_length_list(run_length_list, max_zeroes=6, max_ones=7, pulse_length=694):
     # Split the run length lists into individual codes on runs of more zeroes longer than max_zeroes
     # Returns list of list of ints
     split_run_length_lists = []
     start = 0
+    skip = False
     for i, val in enumerate(run_length_list):
         # check if too many zeros (an even index indicates it is a zero)
         if val > max_zeroes * pulse_length and i % 2 == 1:
-            split_run_length_lists.append(run_length_list[start:i])
+            if not skip:
+                split_run_length_lists.append(run_length_list[start:i])
             start = i+1
+            skip = False
         # TODO consider throwing out any codes with a too long string of ones
-    split_run_length_lists.append(run_length_list[start:])
+        if val > max_ones * pulse_length and i % 2 == 0:
+            skip = True
+    if not skip:
+        split_run_length_lists.append(run_length_list[start:])
     return split_run_length_lists

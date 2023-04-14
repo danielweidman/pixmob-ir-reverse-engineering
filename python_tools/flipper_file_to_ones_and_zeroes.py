@@ -50,6 +50,6 @@ def add_to_bit_lists_avoid_duplicates(bit_lists, new_bit_list):
 
 if __name__ == "__main__":
     # Eventually add something iterate over all the flipper files; this is a placeholder
-    bit_lists = flipper_file_to_bits("tests/test_flipper_file.ir")
+    bit_lists = flipper_file_to_bits("../raw_wild_ir_captures/disney_animation_immersive_experience_recorded_by_dani/flipper/Remote31.ir")
     for l in bit_lists:
         print(l)
