@@ -15,24 +15,46 @@ def flipper_file_to_run_length_lists(filename):
     return run_length_lists
 
 
+def split_run_length_list(run_length_list, max_zeroes=6, max_ones=7, pulse_length=694):
+    # Split the run length lists into individual codes on runs of more zeroes longer than max_zeroes
+    # Returns list of list of ints
+    split_run_length_lists = []
+    start = 0
+    skip = False
+    for i, val in enumerate(run_length_list):
+        # check if too many zeros (an even index indicates it is a zero)
+        if val > max_zeroes * pulse_length and i % 2 == 1:
+            if not skip:
+                split_run_length_lists.append(run_length_list[start:i])
+            start = i + 1
+            skip = False
+        # TODO consider throwing out any codes with a too long string of ones
+        if val > max_ones * pulse_length and i % 2 == 0:
+            skip = True
+    if not skip:
+        split_run_length_lists.append(run_length_list[start:])
+    return split_run_length_lists
+
+
 def flipper_file_to_bits(filename):
     run_length_lists = flipper_file_to_run_length_lists(filename)
     split_run_length_lists = []
     for run_length_list in run_length_lists:
-        split_run_length_lists += funcs.split_run_length_list(run_length_list)
+        split_run_length_lists += split_run_length_list(run_length_list)
     bit_lists = []
-    for split_run_length_list in split_run_length_lists:
+    for run_length_list in split_run_length_lists:
         # A ValueError indicates that some value is not close enough to a multiple of pulse_length, so that code is
         # thrown out.
         try:
-            new_bit_list = funcs.run_lengths_to_bits(split_run_length_list, acceptable_error=.15,
-                                                 pulse_length=cfg.PULSE_LENGTH)
+            new_bit_list = funcs.run_lengths_to_bits(run_length_list, acceptable_error=.15,
+                                                     pulse_length=cfg.PULSE_LENGTH)
             add_to_bit_lists_avoid_duplicates(bit_lists, new_bit_list)
             # print(split_run_length_list)
         except ValueError as e:
             # print(e)
             pass
     return bit_lists
+
 
 def add_to_bit_lists_avoid_duplicates(bit_lists, new_bit_list):
     # Check if the previous code is actually just the end of this code.

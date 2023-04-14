@@ -1,7 +1,6 @@
 import unittest
 from unittest import TestCase
-from python_tools.flipper_file_to_ones_and_zeroes import flipper_file_to_run_length_lists
-from python_tools.pixmob_conversion_funcs import split_run_length_list
+from python_tools.flipper_file_to_ones_and_zeroes import flipper_file_to_run_length_lists, split_run_length_list
 
 
 class Test(TestCase):
@@ -60,6 +59,12 @@ class Test(TestCase):
         ]
         actual = flipper_file_to_run_length_lists("test_flipper_file.ir")
         self.assertEqual(expected_run_length_lists, actual)
+
+    def test_split_run_length_list_splits_on_large_run_of_zeroes(self):
+        example_run_length_list = [694, 1388, 694, 9999, 694, 3470, 1388, 694, 694]
+        expected_split_lists = [[694, 1388, 694], [694, 3470, 1388, 694, 694]]
+        actual = split_run_length_list(example_run_length_list)
+        self.assertEqual(actual, expected_split_lists)
 
 
 if __name__ == '__main__':

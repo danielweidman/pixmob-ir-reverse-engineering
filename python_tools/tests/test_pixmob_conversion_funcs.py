@@ -1,5 +1,6 @@
 import unittest
 from unittest import TestCase
+
 import python_tools.pixmob_conversion_funcs as funcs
 
 
@@ -60,12 +61,6 @@ class Test(TestCase):
         with self.assertRaises(ValueError):
             funcs.run_lengths_to_bits(input, pulse_length=694, acceptable_error=.05)
 
-
-    def test_split_run_length_list_splits_on_large_run_of_zeroes(self):
-        example_run_length_list = [694, 1388, 694, 9999, 694, 3470, 1388, 694, 694]
-        expected_split_lists = [[694, 1388, 694], [694, 3470, 1388, 694, 694]]
-        actual = funcs.split_run_length_list(example_run_length_list)
-        self.assertEqual(actual, expected_split_lists)
 
     # TODO test close to the speed of light to account for doppler effect
 
