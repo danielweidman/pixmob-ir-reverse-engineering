@@ -44,8 +44,8 @@ def run_lengths_to_bits(run_length_list, pulse_length=cfg.PULSE_LENGTH, acceptab
     greater than that fraction of the run length.
     Example [700, 2100, 1400] -> [1, 0, 0, 0, 1, 1]
     Additional example with error check: If acceptable_error is set to .1, [700, 1900, 1400] would cause an error
-    because 1900 is 200 off from the closest multiple of 700, and 200 is larger than .1 * 1400 = 140
-    Any acceptable_error greater than .5 is equivalent to allowing anything
+    because 1900 is 200 off from the closest multiple of 700, and 200 is larger than .1 * 700 = 70
+    Any acceptable_error greater than .5 is equivalent to allowing anything through
     """
     bit_list = []
     bit = 1
@@ -53,9 +53,10 @@ def run_lengths_to_bits(run_length_list, pulse_length=cfg.PULSE_LENGTH, acceptab
         difference = run_length % pulse_length
         # check how close it is to a multiple on both the high side and on the low side
         error = min(difference, abs(pulse_length - difference))
-        # Check error against percentage of run length.
-        if error > acceptable_error * run_length:
-            raise ValueError(f"Error too large: {run_length} is {error} away from nearest possible value, must be within {acceptable_error*run_length}")
+        # Check error against percentage of pulse length.
+        if error > acceptable_error * pulse_length:
+            raise ValueError(
+                f"Error too large: {run_length} is {error} away from nearest possible value, must be within {acceptable_error * pulse_length}")
         pulses = int(round(run_length / pulse_length))
         bit_list += [bit] * pulses
         bit = (bit + 1) % 2
@@ -87,7 +88,7 @@ def split_run_length_list(run_length_list, max_zeroes=6, max_ones=7, pulse_lengt
         if val > max_zeroes * pulse_length and i % 2 == 1:
             if not skip:
                 split_run_length_lists.append(run_length_list[start:i])
-            start = i+1
+            start = i + 1
             skip = False
         # TODO consider throwing out any codes with a too long string of ones
         if val > max_ones * pulse_length and i % 2 == 0:

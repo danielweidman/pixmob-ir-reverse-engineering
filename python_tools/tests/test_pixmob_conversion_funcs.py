@@ -46,7 +46,7 @@ class Test(TestCase):
 
     def test_run_lengths_to_bit_list_doesnt_raise_ValueError_if_close_enough(self):
         input = [1407, 2069, 727, 1354, 1389, 2774, 729, 2036, 1414, 1352, 726, 2067, 1436]
-        funcs.run_lengths_to_bits(input, pulse_length=694, acceptable_error=.05)
+        funcs.run_lengths_to_bits(input, pulse_length=694, acceptable_error=.1)
 
     def test_run_lengths_to_bit_list_raises_ValueError_if_data_too_far_off(self):
         #                         vvv 216 away from nearest multiple of 694 (which is 1388)
@@ -66,6 +66,8 @@ class Test(TestCase):
         expected_split_lists = [[694, 1388, 694], [694, 3470, 1388, 694, 694]]
         actual = funcs.split_run_length_list(example_run_length_list)
         self.assertEqual(actual, expected_split_lists)
+
+    # TODO test close to the speed of light to account for doppler effect
 
 
 if __name__ == '__main__':

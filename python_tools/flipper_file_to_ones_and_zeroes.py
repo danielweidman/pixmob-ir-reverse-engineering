@@ -28,6 +28,7 @@ def flipper_file_to_bits(filename):
             new_bit_list = funcs.run_lengths_to_bits(split_run_length_list, acceptable_error=.15,
                                                  pulse_length=cfg.PULSE_LENGTH)
             add_to_bit_lists_avoid_duplicates(bit_lists, new_bit_list)
+            # print(split_run_length_list)
         except ValueError as e:
             # print(e)
             pass
@@ -44,12 +45,15 @@ def add_to_bit_lists_avoid_duplicates(bit_lists, new_bit_list):
     # Note: You'll have to check again before adding to the big main list, this just checks within the one file.
     if new_bit_list not in bit_lists:
         bit_lists.append(new_bit_list)
-        # print(bit_list)
-        # print(split_run_length_list)
+        # print(new_bit_list)
+    else:
+        ...
+        # TODO increment some counter for each code
 
 
 if __name__ == "__main__":
     # Eventually add something iterate over all the flipper files; this is a placeholder
-    bit_lists = flipper_file_to_bits("../raw_wild_ir_captures/disney_animation_immersive_experience_recorded_by_dani/flipper/Remote31.ir")
+    filename = "../raw_wild_ir_captures/coldplay_music_of_the_spheres_recorded_by_steve/remote13.ir"
+    bit_lists = flipper_file_to_bits(filename)
     for l in bit_lists:
         print(l)
