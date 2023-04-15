@@ -1,4 +1,6 @@
 # Read a flipper file and for each raw capture, output a list of 1s and 0s (700 us high = 1, 700us low = 0)
+import serial
+
 import python_tools.pixmob_conversion_funcs as funcs
 from pathlib import Path
 import python_tools.config as cfg
@@ -75,7 +77,8 @@ def add_to_bit_lists_avoid_duplicates(bit_lists, new_bit_list):
         # TODO increment some counter for each code
 
 
-if __name__ == "__main__":
+def send_all_found_flipper_codes():
+    arduino = serial.Serial(port=cfg.ARDUINO_SERIAL_PORT, baudrate=cfg.ARDUINO_BAUD_RATE, timeout=.1)
     mega_list = []
     root_dir = "../raw_wild_ir_captures"
     p = Path(root_dir)
@@ -85,4 +88,14 @@ if __name__ == "__main__":
             if code not in mega_list:
                 mega_list.append(code)
     for code in mega_list:
-        print(code)
+        try:
+            print(code)
+            arduino_string_ver = funcs.bits_to_arduino_string(code)
+            arduino.write(bytes(arduino_string_ver, 'utf-8'))
+            input("Press enter for next")
+            print("Command sent to Arduino.")
+        except ValueError as e:
+            print(e)
+
+if __name__ == "__main__":
+    send_all_found_flipper_codes()
