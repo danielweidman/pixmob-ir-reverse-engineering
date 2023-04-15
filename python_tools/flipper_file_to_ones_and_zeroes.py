@@ -1,6 +1,8 @@
 # Read a flipper file and for each raw capture, output a list of 1s and 0s (700 us high = 1, 700us low = 0)
 import python_tools.pixmob_conversion_funcs as funcs
+from pathlib import Path
 import python_tools.config as cfg
+
 
 
 def flipper_file_to_run_length_lists(filename):
@@ -74,8 +76,13 @@ def add_to_bit_lists_avoid_duplicates(bit_lists, new_bit_list):
 
 
 if __name__ == "__main__":
-    # Eventually add something iterate over all the flipper files; this is a placeholder
-    filename = "../raw_wild_ir_captures/coldplay_music_of_the_spheres_recorded_by_steve/remote13.ir"
-    bit_lists = flipper_file_to_bits(filename)
-    for l in bit_lists:
-        print(l)
+    mega_list = []
+    root_dir = "../raw_wild_ir_captures"
+    p = Path(root_dir)
+    for path in p.rglob("**/*.ir"):
+        codes = flipper_file_to_bits(str(path))
+        for code in codes:
+            if code not in mega_list:
+                mega_list.append(code)
+    for code in mega_list:
+        print(code)
