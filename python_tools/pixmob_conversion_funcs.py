@@ -37,22 +37,26 @@ def bits_to_run_lengths_microseconds(bit_list, pulse_length=cfg.PULSE_LENGTH):
 
 
 def run_lengths_to_bits(run_length_list, pulse_length=cfg.PULSE_LENGTH, acceptable_error=1):
-    # Convert list of run lengths to 1s and 0s based on the pulse length in the kwarg
-    # Resulting lists always start with 1
-    # If acceptable_error is set to something less than 1, an exception will be raised if we find a remainder
-    # greater than that fraction of the pulse length.
-    # Example [700, 2100, 1400] -> [1, 0, 0, 0, 1, 1]
-    # Additional example with error check: If acceptable_error is set to .1, [700, 1900, 1400] would cause an error
-    # because 1900 is 200 off from the closest multiple of 700, and 200 is larger than .1 * 700 = 70
+    """
+    Convert list of run lengths to 1s and 0s based on the pulse length in the kwarg
+    Resulting lists always start with 1
+    If acceptable_error is set to something less than 1, an exception will be raised if we find a remainder
+    greater than that fraction of the run length.
+    Example [700, 2100, 1400] -> [1, 0, 0, 0, 1, 1]
+    Additional example with error check: If acceptable_error is set to .1, [700, 1900, 1400] would cause an error
+    because 1900 is 200 off from the closest multiple of 700, and 200 is larger than .1 * 700 = 70
+    Any acceptable_error greater than .5 is equivalent to allowing anything through
+    """
     bit_list = []
     bit = 1
     for run_length in run_length_list:
         difference = run_length % pulse_length
-        # check for too high and too low
-        epsilon = min(difference, abs(pulse_length - difference))
-        if epsilon > acceptable_error * pulse_length:
-            raise ValueError(f"Error too large: {run_length} is {epsilon} away from nearest possible value, must be within {acceptable_error*pulse_length}")
-
+        # check how close it is to a multiple on both the high side and on the low side
+        error = min(difference, abs(pulse_length - difference))
+        # Check error against percentage of pulse length.
+        if error > acceptable_error * pulse_length:
+            raise ValueError(
+                f"Error too large: {run_length} is {error} away from nearest possible value, must be within {acceptable_error * pulse_length}")
         pulses = int(round(run_length / pulse_length))
         bit_list += [bit] * pulses
         bit = (bit + 1) % 2
@@ -71,3 +75,5 @@ def bits_to_arduino_string(bit_list):
     out = "[" + str(len(run_lengths)) + "]"
     out += "".join([str(int(i)) for i in run_lengths])
     return out + ","
+
+
