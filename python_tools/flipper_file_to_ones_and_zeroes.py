@@ -91,7 +91,7 @@ def get_all_found_flipper_codes(root_dir):
 
 
 if __name__ == "__main__":
-    root_dir = "../raw_wild_ir_captures/coachella_2023_samy"
+    root_dir = "../raw_wild_ir_captures"
     mega_list = get_all_found_flipper_codes(root_dir)
     for code in mega_list:
         print(code)
