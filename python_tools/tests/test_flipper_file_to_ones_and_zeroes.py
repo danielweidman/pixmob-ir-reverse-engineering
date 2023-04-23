@@ -67,5 +67,12 @@ class Test(TestCase):
         self.assertEqual(actual, expected_split_lists)
 
 
+    def test_split_run_length_list_ends_with_long_run_of_zeros_doesnt_return_empty_list(self):
+        example_run_length_list = [694, 1388, 694, 9999, 694, 3470, 1388, 694, 694, 8000]
+        expected_split_lists = [[694, 1388, 694], [694, 3470, 1388, 694, 694]]
+        actual = split_run_length_list(example_run_length_list)
+        self.assertEqual(actual, expected_split_lists)
+
+
 if __name__ == '__main__':
     unittest.main()

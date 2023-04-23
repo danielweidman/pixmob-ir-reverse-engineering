@@ -4,7 +4,7 @@ import serial
 import python_tools.pixmob_conversion_funcs as funcs
 from pathlib import Path
 import python_tools.config as cfg
-
+from python_tools.send import send_list_of_codes
 
 
 def flipper_file_to_run_length_lists(filename):
@@ -32,11 +32,13 @@ def split_run_length_list(run_length_list, max_zeroes=6, max_ones=7, pulse_lengt
                 split_run_length_lists.append(run_length_list[start:i])
             start = i + 1
             skip = False
-        # TODO consider throwing out any codes with a too long string of ones
+        # Throw out codes with too many ones in a row
         if val > max_ones * pulse_length and i % 2 == 0:
             skip = True
     if not skip:
-        split_run_length_lists.append(run_length_list[start:])
+        # ignore empty lists from the end of a recording
+        if len(run_length_list[start:]) != 0:
+            split_run_length_lists.append(run_length_list[start:])
     return split_run_length_lists
 
 
@@ -77,25 +79,20 @@ def add_to_bit_lists_avoid_duplicates(bit_lists, new_bit_list):
         # TODO increment some counter for each code
 
 
-def send_all_found_flipper_codes():
-    arduino = serial.Serial(port=cfg.ARDUINO_SERIAL_PORT, baudrate=cfg.ARDUINO_BAUD_RATE, timeout=.1)
+def get_all_found_flipper_codes(root_dir):
     mega_list = []
-    root_dir = "../raw_wild_ir_captures"
     p = Path(root_dir)
     for path in p.rglob("**/*.ir"):
         codes = flipper_file_to_bits(str(path))
         for code in codes:
             if code not in mega_list:
                 mega_list.append(code)
-    for code in mega_list:
-        try:
-            print(code)
-            arduino_string_ver = funcs.bits_to_arduino_string(code)
-            arduino.write(bytes(arduino_string_ver, 'utf-8'))
-            input("Press enter for next")
-            print("Command sent to Arduino.")
-        except ValueError as e:
-            print(e)
+    return mega_list
+
 
 if __name__ == "__main__":
-    send_all_found_flipper_codes()
+    root_dir = "../raw_wild_ir_captures"
+    mega_list = get_all_found_flipper_codes(root_dir)
+    for code in mega_list:
+        print(code)
+    send_list_of_codes(mega_list)
