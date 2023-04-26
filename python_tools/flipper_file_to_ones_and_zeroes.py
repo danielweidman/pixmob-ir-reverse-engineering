@@ -95,4 +95,4 @@ if __name__ == "__main__":
     mega_list = get_all_found_flipper_codes(root_dir)
     for code in mega_list:
         print(code)
-    send_list_of_codes(mega_list)
+    send_list_of_codes(mega_list, wait=True)
