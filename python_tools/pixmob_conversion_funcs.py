@@ -77,3 +77,28 @@ def bits_to_arduino_string(bit_list):
     return out + ","
 
 
+def bits_to_nrzi(bit_list, convention="space"):
+    if convention.lower() == "mark":
+        same = 0
+        change = 1
+    elif convention.lower() == "space":
+        same = 1
+        change = 0
+    else:
+        raise ValueError("Convention must be space or mark")
+
+    previous = bit_list[0]
+    nrzi_bits = [change]
+    for bit in bit_list[1:]:
+        if bit==previous:
+            nrzi_bits.append(same)
+        else:
+            nrzi_bits.append(change)
+        previous = bit
+    return nrzi_bits
+
+def bit_list_to_bit_string(bit_list):
+    return "".join([str(bit) for bit in bit_list])
+
+def invert(bit_list):
+    return [(i+1)%2 for i in bit_list]
