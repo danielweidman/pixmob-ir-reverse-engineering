@@ -1,0 +1,3 @@
+These are some semi-manually created, cleaned, and spliced-out RF commands for the PixMob RF bracelets operating on 915 Mhz. Note that bracelets in countries other than the USA may operate on different frequencies.
+
+The bracelets have a sleeping behavior that requires you to transmit a code repeatedly for up to ~30 seconds to "wake" them up after some time of inactivity. I reccomend using "nothing.sub" in the "withrepeats" folder for this purpose. After sending that for 30 seconds, the other codes will hopefully work.
