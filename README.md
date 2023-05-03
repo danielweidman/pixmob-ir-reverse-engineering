@@ -1,6 +1,8 @@
-# PixMob IR Reverse Engineering Project
+# PixMob IR (and RF!) Reverse Engineering Project
 
-Hacking the PixMob infrared protocol to enable control of PixMob wristbands at home.
+Hacking the PixMob infrared (and now RF!) protocol to enable control of PixMob wristbands at home.
+
+**Most of this writeup pertains for the IR-controlled bracelets, but some new content has been added in the &quot;rf&quot; folder regarding the RF bracelets, including some functional signal recordings.**
 
 ***Join the PIXMOD Discord server! https://discord.gg/UYqTjC7xp3***
 
