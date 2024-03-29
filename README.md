@@ -4,7 +4,7 @@ For those people who are only seeking an easy way to give a second life to their
 
 Test it online at: ([here](https://ivanr3d.com/tools/led-wristband/)).
 
-![Webpage screenshot](media/webpage.png)
+([![Webpage screenshot](media/webpage.png)](https://ivanr3d.com/tools/led-wristband/))
 
 The source code for this webpage is available in the folder /www.
 

@@ -43,7 +43,7 @@ document.getElementById('ledForm').addEventListener('submit', function(event) {
     var mainEffect = document.getElementById('main-effect').value;
     var tailCode = document.getElementById('tail-code').value;
     
-    if (tailcode !== "") {
+    if (tailCode !== "") {
         sendEffect(mainEffect, tailCode);
     } else {
         sendEffect(mainEffect);
