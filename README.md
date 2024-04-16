@@ -1,3 +1,13 @@
+# What's new in this fork?
+
+For those people who are only seeking an easy way to give a second life to their PixMob wristband, I added a simple webpage that allow them to connect an Arduino compatible board with an infrared transmitter to try out the different effects already found by the original project. 
+
+Test it online at: ([here](https://ivanr3d.com/tools/led-wristband/)).
+
+([![Webpage screenshot](media/webpage.png)](https://ivanr3d.com/tools/led-wristband/))
+
+The source code for this webpage is available in the folder /www.
+
 # PixMob IR (and RF!) Reverse Engineering Project
 
 Hacking the PixMob infrared (and now RF!) protocol to enable control of PixMob wristbands at home.

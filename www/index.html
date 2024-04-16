@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Lights Wristband Effects</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <span id="helpIcon" class="help-icon">&#63;</span>
+        <h1>LED Lights Wristband Effects</h1>
+        <button type="button" id="connectBtn" class="btn btn-connect">Connect to board</button>
+        <form id="ledForm">
+            <div id="info">
+                <p>ℹ️ Some effects could not work in some wristband models or could require sending the code more than one time to work.</p>
+            </div>
+            <div class="input-group">
+                <label for="main-effect">Main Effect:</label>
+                <!-- <input type="text" id="main-effect" name="main-effect" placeholder="Enter main effect..."> -->
+                <select name="main-effect" id="main-effect"></select>
+            </div>
+            <div class="input-group">
+                <label for="tail-code">Tail Code:</label>
+                <select name="tail-code" id="tail-code">
+                    <option value="">Select tail code</option>
+                    <option value="FADE_1">FADE_1</option>
+                    <option value="FADE_2">FADE_2</option>
+                    <option value="FADE_3">FADE_3</option>
+                    <option value="FADE_4">FADE_4</option>
+                    <option value="FADE_5">FADE_5</option>
+                    <option value="FADE_6">FADE_6</option>
+                    <option value="SHARP_PROBABILISTIC_1">SHARP_PROBABILISTIC_1</option>
+                    <option value="SHARP_PROBABILISTIC_2">SHARP_PROBABILISTIC_2</option>
+                    <option value="SHARP_PROBABILISTIC_3">SHARP_PROBABILISTIC_3</option>
+                    <option value="SHARP_PROBABILISTIC_4">SHARP_PROBABILISTIC_4</option>
+                    <option value="FADE_PROBABILISTIC_1">FADE_PROBABILISTIC_1</option>
+                    <option value="FADE_PROBABILISTIC_2">FADE_PROBABILISTIC_2</option>
+                    <option value="FADE_PROBABILISTIC_3">FADE_PROBABILISTIC_3</option>
+                    <option value="FADE_PROBABILISTIC_4">FADE_PROBABILISTIC_4</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Send</button>
+        </form>
+    </div>
+
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Give a second life to your light event wristband!</h2>
+            <p>If you have light even wristband such as a PixMob you can easily use it at home with this web.</p>
+            <p>You will need:
+                <ol>
+                    <li>An Arduino-compatible microcontroller.</li>
+                    <li>A 940nm IR emitter for the Arduino. You could set up a raw IR led or use a board like the transmitter piece of <a href="https://www.amazon.com/Digital-Receiver-Transmitter-Arduino-Compatible/dp/B01E20VQD8/" target="_blank">this</a>.</li>
+                </ol>
+            </p>
+            <h3>Instruction to use</h3>
+            <ol>
+                <li>Upload <a href="./docs/arduino_sender/PixMob_Transmitter_Arduino/PixMob_Transmitter_Arduino.ino" target="_blank">this sketch</a> to your Arduino compatible board (connected to an infrarred sensor). If you are using an ESP32 board, then use <a href="./docs/arduino_sender/PixMob_Transmitter_ESP32/PixMob_Transmitter_ESP32.ino" target="_blank">this sketch.</a></li>
+                <li>Connect the board to this webpage using the [Connect board] button in the main screen.</li>
+                <li>Set the main effect and tail code you desire and press Send!</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="js/effects_definitions.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
