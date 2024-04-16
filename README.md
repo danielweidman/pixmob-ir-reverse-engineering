@@ -1,12 +1,4 @@
-# What's new in this fork?
 
-For those people who are only seeking an easy way to give a second life to their PixMob wristband, I added a simple webpage that allow them to connect an Arduino compatible board with an infrared transmitter to try out the different effects already found by the original project. 
-
-Test it online at: ([here](https://ivanr3d.com/tools/led-wristband/)).
-
-([![Webpage screenshot](media/webpage.png)](https://ivanr3d.com/tools/led-wristband/))
-
-The source code for this webpage is available in the folder /www.
 
 # PixMob IR (and RF!) Reverse Engineering Project
 
@@ -16,7 +8,7 @@ Hacking the PixMob infrared (and now RF!) protocol to enable control of PixMob w
 
 ***Join the PIXMOD Discord server! https://discord.gg/UYqTjC7xp3***
 
-***A huge thanks to Zach Resmer ([@zacharesmer](https://github.com/zacharesmer)) and Sean Yem ([@sean1983](https://github.com/sean1983)) for their help in figuring out the packet structure of the IR transmissions; Steve and Remco from Reddit for making some initial in-the-wild IR signal Flipper recordings; and Dan ([@hckrdan](https://github.com/hckrdan)) for some crafty raw recordings done with a signal analyzer.***
+***A huge thanks to Zach Resmer ([@zacharesmer](https://github.com/zacharesmer)) and Sean Yem ([@sean1983](https://github.com/sean1983)) for their help in figuring out the packet structure of the IR transmissions; Steve and Remco from Reddit for making some initial in-the-wild IR signal Flipper recordings; and Dan ([@hckrdan](https://github.com/hckrdan)) for some crafty raw recordings done with a signal analyzer...and so many others for contributing code, signal recordings, expertise, etc! See the updates section and the Discord server.***
 
 ### Skip down to &quot;[Instructions](https://github.com/danielweidman/pixmob-ir-reverse-engineering#instructions)&quot; if you are not interested in the full write-up and just want to light up your bracelet(s)!
 
@@ -102,7 +94,8 @@ In reviewing the brute force results, we discovered that some of the light effec
 - A project reverse engineering the less-common Bluetooth Low-Energy based PixMob bracelets: [https://github.com/MustBeArt/PIXMOB-reversing](https://github.com/MustBeArt/PIXMOB-reversing)
 - Another project that does the equivalent of this one, but for Xylobands, a different brand of LED bracelet that uses RF instead of IR: [https://github.com/StefanKrupop/XyloShield](https://github.com/StefanKrupop/XyloShield)
 
-### Updates (as of 12/16/2022)
+### Changes/updates
+#### Updates through 12/16/2022
 There has been a lot of really good activity and progress in this repo since I first posted it! I am so appreciative of all the help from community members here.
 - /u/remco has contributed some more raw recordings from a Flipper at a Coldplay concert (now we've got two sets of Coldplay recordings)
 - [@hckrdan](https://github.com/hckrdan) made some recordings using a signal analyzer with a Raspberry Pi and IR receiver at an Imagine Dragons show
@@ -113,15 +106,23 @@ There has been a lot of really good activity and progress in this repo since I f
 - [@lasry1](https://github.com/lasry1), [@JulioC](https://github.com/lasry1), and I made it so we can control the bracelets via [Broadlink smart home IR devices](https://github.com/danielweidman/flipper-pixmob-ir-codes/issues/1).
 - AND, last but not least, [@sean1983](https://github.com/sean1983) has made [tons of progress](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/8) discovering many more codes, assigning RGB values, investigating packet structure, and more!
 
-### More Updates! (as of 2/20/2023)
+#### Updates through 2/20/2023
 - [@sean1983](https://github.com/sean1983) has continued to make [tons of progress](https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/8) looking at the protocol, and made a much more streamlined brute force process to discover **500+ color commands**!
 - [@NTLS09](https://github.com/NTLS09) put together a pretty comprehensive IR Plus file that can be used with smartphones and other devices.
 - [@sean1983](https://github.com/sean1983) has dumped the contents of an EEPROM component (https://github.com/danielweidman/pixmob-ir-reverse-engineering/issues/16)
 
+#### Updates through 4/16/2023
+- TONS of progress has been made by excellent folks in the PIXMOD [Discord server](https://discord.gg/UYqTjC7xp3). I highly recommend joining if you want the most up-to-date discussion about the IR and RF protocol, or if you just want to chat about PixMob in general.
+- More RF captures have been added to the repository for the RF PixMob bracelets that are becoming more and more common in one-off events like sports games (thanks [@skelliam](https://github.com/skelliam)).
+- [@IvanR3D](https://github.com/IvanR3D) has created a webpage interface for controlling bracelets without running any Python code locally (by having one's browser connect directly to the Arduino)
+- [@nb-programmer](https://github.com/nb-programmer) has a nice [CLI](https://github.com/danielweidman/pixmob-ir-reverse-engineering/pull/47) program for interacting with the bracelets (via Arduino) 
 
 ## Instructions
 
-***If you have a Flipper Zero device and you would just like to transmit some pre-defined signals without a computer or Arduino, see this repository instead: [https://github.com/danielweidman/flipper-pixmob-ir-codes](https://github.com/danielweidman/flipper-pixmob-ir-codes).***
+There are a few different options for how to control your own bracelets using the code in this repository.
+
+### Option 1: Using Arduino and Python code
+
 
 **Code and structure:**
 
@@ -142,8 +143,25 @@ Basically, the steps are:
 4. Set the `ARDUINO_SERIAL_PORT` in "python_tools/config.py". If using a lower-power Arduino device like an Arduino Nano, also set `WAIT_BEFORE_SEND` to True.
 5. Run the demo script. Your PixMob device(s) should light up!
    Use demo_single_effect.py, demo_multiple_effects.py, or demo_multiple_effects_advanced.py. Instructions are provided in each file.
+   You can also use demo_effect_repl.py to control via a command line interface instead of editing the script files to specify effects (thanks to [@nb-programmer](https://github.com/nb-programmer) for this).
 
 More specific instructions are in the README files in the relevant folders. Feel free to open an Issue if you need help.
+
+### Option 2: Using Arduino and Web Interface
+If you don't want to bother with the Python code, you can control via a Web interface generously created and hosted by [IvanR3D](https://github.com/IvanR3D). You still need to set up the Arduino as described for steps 1-3 Option 1 above.
+
+1. Follow steps 1-3 from "Option 1" to set up and program your Arduino.
+2. Open the demo webpage: https://ivanr3d.com/tools/led-wristband/ in Chrome.
+3. Press "Connect to board" and select the Arduino device in the browser prompt.
+4. Press "Send"
+   
+The source code for the webpage is available in the "/www" folder.
+
+[![Webpage screenshot](media/webpage.png)](https://ivanr3d.com/tools/led-wristband/)
+
+### Option 3: Using Flipper Zero
+
+If you have a Flipper Zero device and you would just like to transmit some pre-defined signals without a computer or Arduino, see this repository instead: [https://github.com/danielweidman/flipper-pixmob-ir-codes](https://github.com/danielweidman/flipper-pixmob-ir-codes).
 
 **Replacing the batteries:**
 
