@@ -1,7 +1,7 @@
 |Protocol|Name on PCB|Version|Copyright date|MCU|EEPROM|Picture|Shows|Other|
 |--------|-----------|-------|--------------|---|------|-------|-----|----------------------|
-|IR|MUTAFORMA|V4|2015-02-03|||<img src="media/MUTAFORMA V4 20150203.png"> <img src="media/MUTAFORMA V4.4 20140701 xray overlay samy 2.webp">|Taylor Swift 1989 tour||
-|IR|PALM|V1.A|2019-07-12|ABOV MC81F4204||<img src="media/PALM V1.A 20190712.png">)|||
+|IR|MUTAFORMA|V4|2015-02-03|||<img src="media/MUTAFORMA V4 20150203.jpg"> <img src="media/MUTAFORMA V4.4 20140701 xray overlay samy 2.webp">|Taylor Swift 1989 tour||
+|IR|PALM|V1.A|2019-07-12|ABOV MC81F4204||<img src="media/PALM V1.A 20190712.jpg">|||
 |IR|AURORA|V1.7|20211027|||<img src="media/AURORA V1.7 20211027.jpg"><img src="media/AURORA xray samy 2.webp">|||
 |IR|VIC|v2.3r1|2021-12-06|Nyquist NY8A054ES8||<img src="media/VIC v2.3r1 20211206.jpg"><img src="media/VIC color traces xray samy.webp">|||
 |RF|CEMENT|V1.1|2022-02-28|||<img src="media/CEMENT V1.1 20220228.jpg"><img src="media/CEMENT xray.webp">||Waveband|
