@@ -1,5 +1,5 @@
 # Known types of pixmob hardware
-X-ray photo/editing credits: Samy(.pl) Kamkar
+X-ray photo/editing credits: [Samy\(.pl\) Kamkar](samy.pl)
 
 |Protocol|Name on PCB|Version|Copyright date|MCU|EEPROM|Pictures|Shows (incomplete list)|Other|
 |--------|-----------|-------|--------------|---|------|--------|-----|----------------------|
@@ -11,4 +11,10 @@ X-ray photo/editing credits: Samy(.pl) Kamkar
 |RF|CEMENT|V1.1|2022-02-28|||<img src="media/CEMENT V1.1 20220228.jpg"><img src="media/CEMENT xray.webp">||Waveband|
 |IR|DIAMOND|V4.4a|2023-04-21|||<img src="media/DIAMOND V4.4A 20230421.jpg">|- Cavs vs. Magic 2024, Cleveland|X4|
 
-TODO link to other hardware reverse engineering projects (cra0, https://yeokhengmeng.com/2019/08/teardown-of-ndp2019-led-wristband/, etc.)
+# Some hardware reverse engineering projects: 
+
+https://github.com/cra0/Pixmob-IR-Reversing/tree/master
+
+https://yeokhengmeng.com/2019/08/teardown-of-ndp2019-led-wristband/
+
+https://jg.sn.sg/ndp-pixmob-1/
