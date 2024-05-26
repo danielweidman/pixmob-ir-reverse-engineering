@@ -10,6 +10,9 @@ Hacking the PixMob infrared (and now RF!) protocol to enable control of PixMob w
 
 ***A huge thanks to Zach Resmer ([@zacharesmer](https://github.com/zacharesmer)) and Sean Yem ([@sean1983](https://github.com/sean1983)) for their help in figuring out the packet structure of the IR transmissions; Steve and Remco from Reddit for making some initial in-the-wild IR signal Flipper recordings; and Dan ([@hckrdan](https://github.com/hckrdan)) for some crafty raw recordings done with a signal analyzer...and so many others for contributing code, signal recordings, expertise, etc! See the updates section and the Discord server.***
 
+***If you are interested in a project focusing on hacking PixMob by focusing on the EEPROM, see this [project](https://github.com/cra0/Pixmob-IR-Reversing) by [@cra0](https://github.com/cra0)***
+
+
 ### Skip down to &quot;[Instructions](https://github.com/danielweidman/pixmob-ir-reverse-engineering#instructions)&quot; if you are not interested in the full write-up and just want to light up your bracelet(s)!
 
 https://user-images.githubusercontent.com/44669548/182740123-8e16b0af-327b-44b2-a6bb-12d9a502a1fd.mp4
@@ -115,7 +118,7 @@ There has been a lot of really good activity and progress in this repo since I f
 - TONS of progress has been made by excellent folks in the PIXMOD [Discord server](https://discord.gg/UYqTjC7xp3). I highly recommend joining if you want the most up-to-date discussion about the IR and RF protocol, or if you just want to chat about PixMob in general.
 - More RF captures have been added to the repository for the RF PixMob bracelets that are becoming more and more common in one-off events like sports games (thanks [@skelliam](https://github.com/skelliam)).
 - [@IvanR3D](https://github.com/IvanR3D) has created a webpage interface for controlling bracelets without running any Python code locally (by having one's browser connect directly to the Arduino)
-- [@nb-programmer](https://github.com/nb-programmer) has a nice [CLI](https://github.com/danielweidman/pixmob-ir-reverse-engineering/pull/47) program for interacting with the bracelets (via Arduino) 
+- [@nb-programmer](https://github.com/nb-programmer) has a nice [CLI](https://github.com/danielweidman/pixmob-ir-reverse-engineering/pull/47) program for interacting with the bracelets (via Arduino)
 
 ## Instructions
 
