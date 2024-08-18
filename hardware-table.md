@@ -1,4 +1,4 @@
-# Known types of pixmob hardware
+# Known types of Pixmob hardware
 X-ray photo/editing credits: [Samy\(.pl\) Kamkar](samy.pl)
 |Protocol|  Model |  PCB Name | Version|   Rev. Date    |   Power   |         MCU        | Pictures                                                                                   | Shows (incomplete list)             |
 |:------:|:------:|:---------:|:-------|:--------------:|:---------:|:------------------:|--------------------------------------------------------------------------------------------|:------------------------------------|
