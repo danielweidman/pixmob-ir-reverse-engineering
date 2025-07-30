@@ -8,6 +8,8 @@ Hacking the PixMob infrared (and now RF!) protocol to enable control of PixMob w
 
 ***Join the PIXMOD Discord server! https://discord.gg/UYqTjC7xp3***
 
+***[@jamesw343](https://github.com/jamesw343) has a newer repository that has a LOT more comprehensive info about the full IR protocol--basically most of the mysteries documented in this README have been [solved](https://github.com/jamesw343/PixMob_IR)!***
+
 ***A huge thanks to Zach Resmer ([@zacharesmer](https://github.com/zacharesmer)) and Sean Yem ([@sean1983](https://github.com/sean1983)) for their help in figuring out the packet structure of the IR transmissions; Steve and Remco from Reddit for making some initial in-the-wild IR signal Flipper recordings; and Dan ([@hckrdan](https://github.com/hckrdan)) for some crafty raw recordings done with a signal analyzer...and so many others for contributing code, signal recordings, expertise, etc! See the updates section and the Discord server.***
 
 ***If you are interested in a project focusing on hacking PixMob by focusing on the EEPROM, see this [project](https://github.com/cra0/Pixmob-IR-Reversing) by [@cra0](https://github.com/cra0)***
@@ -120,6 +122,10 @@ There has been a lot of really good activity and progress in this repo since I f
 - [@IvanR3D](https://github.com/IvanR3D) has created a webpage interface for controlling bracelets without running any Python code locally (by having one's browser connect directly to the Arduino)
 - [@nb-programmer](https://github.com/nb-programmer) has a nice [CLI](https://github.com/danielweidman/pixmob-ir-reverse-engineering/pull/47) program for interacting with the bracelets (via Arduino)
 
+
+#### Update (2025)
+- A lot of really cool things have been done in the community with PixMob!
+- Most significantly, [jamesw343](https://github.com/jamesw343) has discovered pretty much the full IR protocol encoding via MCU dumping and code analysis. See [here](https://github.com/jamesw343/PixMob_IR)!
 ## Instructions
 
 There are a few different options for how to control your own bracelets using the code in this repository.
