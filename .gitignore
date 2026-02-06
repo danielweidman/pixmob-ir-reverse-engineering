@@ -127,3 +127,22 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+test_console_v0.1.py
+test_console_v0.2.py
+test_console_v0.3.py
+test_console_v0.4.py
+test_console_v0.5.py
+test_console_v0.6.py
+test_console_advanced.py
+test_console.py
+python_tools/config.py
+python_tools/effect_definitions_2.py
+python_tools/effect_definitions.py
+arduino_sender/PixMob_Transmitter_ESP32/PixMob_Transmitter_ESP32.ino
+arduino_sender/PixMob_Transmitter_ESP32/PixMob_Transmitter_ESP32.ino
+python_tools/effect_definitions.py
+python_tools/config.py
+arduino_sender/PixMob_Transmitter_ESP32/PixMob_Transmitter_ESP32.ino
+python_tools/effect_definitions.py
+python_tools/config.py
+arduino_sender/PixMob_Transmitter_ESP32/PixMob_Transmitter_ESP32.ino
