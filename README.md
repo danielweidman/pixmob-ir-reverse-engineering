@@ -4,7 +4,7 @@
 
 Hacking the PixMob infrared (and now RF!) protocol to enable control of PixMob wristbands at home.
 
-**Most of this writeup pertains for the IR-controlled bracelets, but some new content has been added in the &quot;rf&quot; folder regarding the RF bracelets, including some functional signal recordings.**
+**Most of this writeup pertains for the IR-controlled bracelets. The [&quot;rf&quot;](rf) folder covers the RF bracelets: signal recordings, decoded codes, and ready-to-transmit Flipper Zero `.sub` files for 915 MHz (USA) and 868 MHz (EU/UK) — see [rf/flipper](rf/flipper) if you just want to light those up.**
 
 ***Join the PIXMOD Discord server! https://discord.gg/UYqTjC7xp3***
 
@@ -168,9 +168,20 @@ The source code for the webpage is available in the "/www" folder.
 
 [![Webpage screenshot](media/webpage.png)](https://ivanr3d.com/tools/led-wristband/)
 
-### Option 3: Using Flipper Zero
+### Option 3: Using Flipper Zero (IR bracelets)
 
 If you have a Flipper Zero device and you would just like to transmit some pre-defined signals without a computer or Arduino, see this repository instead: [https://github.com/danielweidman/flipper-pixmob-ir-codes](https://github.com/danielweidman/flipper-pixmob-ir-codes).
+
+### Option 4: Using Flipper Zero (RF bracelets, 915 MHz / 868 MHz)
+
+If you have the **RF** bracelets rather than the IR ones, a Flipper Zero can drive them on its own — no Arduino, no computer, and no external radio module, since the Flipper's built-in CC1101 covers both bands.
+
+1. Copy the folder for your region out of [`rf/flipper`](rf/flipper) onto the Flipper's SD card at `/ext/subghz/pixmob`. Use `915Mhz/` in the USA and `868Mhz/` in the EU/UK.
+2. On the Flipper: **Sub-GHz → Saved → pixmob**.
+3. Open `wake.sub` and press **Send**. It runs for ~30 seconds and produces no light — the RF bracelets sleep aggressively and this wakes them up.
+4. Open any other file and press **Send**.
+
+Full walkthrough, an effect-by-effect table, playlist support, and how to regenerate or customise the files: [`rf/flipper/README.md`](rf/flipper/README.md).
 
 **Replacing the batteries:**
 

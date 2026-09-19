@@ -1,0 +1,26 @@
+# PixMob RF playlist for the Flipper Sub-GHz Playlist app.
+# Edit freely: one absolute on-device .sub path per line, '#' starts a comment.
+# wake.sub runs first to bring the bracelets out of sleep.
+
+/ext/subghz/pixmob/wake.sub
+/ext/subghz/pixmob/nothing.sub
+/ext/subghz/pixmob/gold_fade_in.sub
+/ext/subghz/pixmob/gold_fast_fade.sub
+/ext/subghz/pixmob/wine_fade_in.sub
+/ext/subghz/pixmob/white_fastfade.sub
+/ext/subghz/pixmob/rand_red_fade.sub
+/ext/subghz/pixmob/rand_red_fastfade.sub
+/ext/subghz/pixmob/rand_red_fastblink.sub
+/ext/subghz/pixmob/rand_gold_fade.sub
+/ext/subghz/pixmob/rand_gold_fastfade.sub
+/ext/subghz/pixmob/rand_gold_blink.sub
+/ext/subghz/pixmob/rand_white_fade.sub
+/ext/subghz/pixmob/rand_white_fastfade.sub
+/ext/subghz/pixmob/rand_white_blink.sub
+/ext/subghz/pixmob/rand_blue_fade.sub
+/ext/subghz/pixmob/rand_turq_blink.sub
+/ext/subghz/pixmob/rand_rwb.sub
+/ext/subghz/pixmob/rand_color_blinks.sub
+/ext/subghz/pixmob/rand_turq_white_blink.sub
+/ext/subghz/pixmob/rand_turq_blink_nothing.sub
+/ext/subghz/pixmob/wine_gold_alt_fade.sub
